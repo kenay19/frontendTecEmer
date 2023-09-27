@@ -43,6 +43,11 @@
     </ion-item>
 
     <ion-item>
+      <ion-label position="stacked">Constraseñá</ion-label>
+      <ion-input type="password" #contrasena></ion-input>
+    </ion-item>
+
+    <ion-item>
       <ion-label position="stacked">Calle</ion-label>
       <ion-input type="text" #calle></ion-input>
     </ion-item>
@@ -86,5 +91,5 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol)">Registrar</ion-button>
+  <ion-button (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol,contrasena)">Registrar</ion-button>
 </ion-content>

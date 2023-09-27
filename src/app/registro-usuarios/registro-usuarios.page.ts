@@ -12,7 +12,7 @@ export class RegistroUsuariosPage implements OnInit {
   ngOnInit() {
   }
 
-  registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol) {
-    this.crud.registraruser(nombre.value, app.value, apm.value, telefonoFijo.value, celular.value, email.value, calle.value, inte.value, exte.value, colonia.value, municipio.value, estado.value, cp.value, idRol.value).subscribe((data)=> {console.log(data)})
+  registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena) {
+    this.crud.registraruser(nombre.value, app.value, apm.value, telefonoFijo.value, celular.value, email.value, calle.value, inte.value, exte.value, colonia.value, municipio.value, estado.value, cp.value, idRol.value, contrasena.value).subscribe((data)=> {console.log(data)})
   }
 }
