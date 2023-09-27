@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'vendedor',
     loadChildren: () => import('./vendedor/vendedor.module').then( m => m.VendedorPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registro-usuarios',
+    loadChildren: () => import('./registro-usuarios/registro-usuarios.module').then( m => m.RegistroUsuariosPageModule)
+  },
   
 ];
 
