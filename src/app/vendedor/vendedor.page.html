@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bienvenido {{nombre}}</ion-title>
+    <ion-list>
+      <li><button>Cerrar Sesion</button></li>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <nav>
+    <ul>
+      <li><button (click)="changeFromFormulario()">Listado de Equipo Medico</button></li>
+      <li><button (click)="changeFromListado()" >Agregar Equipo Medico</button></li>
+    </ul>
+  </nav>
+  <ion-content>
+    <ion-item *ngIf="show === 'listado' ">
+      <app-listado-vendedor></app-listado-vendedor>
+    </ion-item>
+  </ion-content>
+</ion-content>
