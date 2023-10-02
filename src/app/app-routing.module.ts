@@ -22,7 +22,19 @@ const routes: Routes = [
   {
     path: 'registro-usuarios',
     loadChildren: () => import('./registro-usuarios/registro-usuarios.module').then( m => m.RegistroUsuariosPageModule)
+  },  {
+    path: 'camera-log',
+    loadChildren: () => import('./camera-log/camera-log.module').then( m => m.CameraLogPageModule)
   },
+  {
+    path: 'donador',
+    loadChildren: () => import('./donador/donador.module').then( m => m.DonadorPageModule)
+  },
+  {
+    path: 'solicitante',
+    loadChildren: () => import('./solicitante/solicitante.module').then( m => m.SolicitantePageModule)
+  },
+
   
 ];
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from '../service/authenticate.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-vendedor',
   templateUrl: './vendedor.page.html',
@@ -7,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class VendedorPage implements OnInit {
 
   nombre: string = 'Kevin Omar ';
-
+  user !: any;
   show: string = 'listado';
-  constructor() { }
+  constructor(private crud:AuthenticateService , private router:Router) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter(){
+    this.user = this.crud.getUser();
+    if(this.user){
+      if(this.user['idRol'] !== 1){
+        this.router.navigate(['/'])
+      }
+    }else{
+      this.router.navigate(['/'])
+    }
+    
   }
 
   changeFromListado() {
@@ -25,6 +39,11 @@ export class VendedorPage implements OnInit {
       this.show = 'listado'    
     }
     console.log(this.show);
+  }
+
+  logOut(){
+    this.crud.SessionOut();
+    this.router.navigate(['/']);
   }
 
 }

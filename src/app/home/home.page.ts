@@ -10,5 +10,8 @@ export class HomePage {
 
   constructor(private router:Router) {}
 
+  navigateToCameraLog(){
+    this.router.navigate(['/camera-log']);
+  }
     
 }
