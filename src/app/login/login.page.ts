@@ -9,7 +9,7 @@ import { AuthenticateService } from '../service/authenticate.service';
 })
 export class LoginPage implements OnInit {
 
-  direccion: String[] = ['/vendedor']
+  direccion: String[] = ['/vendedor','/donador','/solicitante']
 
   constructor(private router:Router,private crud:AuthenticateService) { }
 
