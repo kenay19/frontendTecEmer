@@ -13,6 +13,8 @@ export class VendedorPage implements OnInit {
   show: string = 'listado';
   constructor(private crud:AuthenticateService , private router:Router) { }
 
+equipos !: any;
+
   ngOnInit() {
   }
 
@@ -25,6 +27,7 @@ export class VendedorPage implements OnInit {
     }else{
       this.router.navigate(['/'])
     }
+    
     
   }
 
