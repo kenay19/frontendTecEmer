@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonadorPage implements OnInit {
 
+  show:string = 'listado';
   constructor() { }
 
   ngOnInit() {
