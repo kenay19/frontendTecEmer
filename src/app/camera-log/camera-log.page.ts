@@ -52,8 +52,8 @@ export class CameraLogPage implements OnInit {
       
       const pixelData = await this.compressImageDataToJPEG(imageData);
       // Enviar la matriz de píxeles al backend
-      console.log(pixelData)
-      this.auth.loginWithFace(pixelData).subscribe(data=>{
+      console.log(imageData)
+      this.auth.loginWithFace(imageData).subscribe(data=>{
       console.log(data)
      });
 
@@ -67,7 +67,7 @@ export class CameraLogPage implements OnInit {
   }
 
   navigateToRegisterUser(){
-    this.router.navigate(['/registro-usuarios']);
+    this.router.navigate(['/registro-usuarios','camera']);
   }
 
   ionViewWillLeave() {
@@ -91,5 +91,9 @@ export class CameraLogPage implements OnInit {
         resolve(blob);
       }, 'image/jpeg');
     });
+  }
+
+  HomeReturn(){
+    this.router.navigate(['/'])
   }
 }

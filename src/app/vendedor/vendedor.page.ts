@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class VendedorPage implements OnInit {
 
-  nombre: string = 'Kevin Omar ';
+  nombre!: string ;
   user !: any;
   show: string = 'listado';
   constructor(private crud:AuthenticateService , private router:Router) { }
@@ -27,7 +27,7 @@ equipos !: any;
     }else{
       this.router.navigate(['/'])
     }
-    
+    this.nombre =this.user.nombre
     
   }
 

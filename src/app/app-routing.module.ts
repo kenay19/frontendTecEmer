@@ -21,8 +21,19 @@ const routes: Routes = [
   },
   {
     path: 'registro-usuarios',
-    loadChildren: () => import('./registro-usuarios/registro-usuarios.module').then( m => m.RegistroUsuariosPageModule)
-  },  {
+    children: [
+      {
+        path: "",
+        loadChildren: () => import('./registro-usuarios/registro-usuarios.module').then( m => m.RegistroUsuariosPageModule)
+      },
+      {
+        path: ":rutaProcedente",
+      loadChildren: () => import('./registro-usuarios/registro-usuarios.module').then( m => m.RegistroUsuariosPageModule)
+
+      }
+    ]
+  },
+  {
     path: 'camera-log',
     loadChildren: () => import('./camera-log/camera-log.module').then( m => m.CameraLogPageModule)
   },

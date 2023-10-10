@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticateService } from 'src/app/service/authenticate.service';
+import { ProductsService } from 'src/app/service/products.service';
 
 @Component({
   selector: 'app-listado-vendedor',
@@ -7,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoVendedorComponent  implements OnInit {
 
-  data !: Object[];
+  datos : any[] = [];
   estados: any[] = [{name: 'En venta', function:this.sortVenta},{name: 'Listado', function:this.sortListados }];
 
-  constructor() { }
+  constructor(private products:ProductsService, private auth:AuthenticateService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const {idUsuario} = this.auth.getUser(); 
+     this.products.getProducts(idUsuario).subscribe((productos) => {
+      for(let i  = 0; i < Object.keys(productos).length; i++) {
+        this.datos.push(productos[i])
+      }
+    })
+    console.log(this.datos)
+    console.log(this.estados)
+  }
 
   sortVenta(){
     console.log('venta');

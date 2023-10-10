@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button>Regresar</ion-button>
+    <ion-button (click)="PageReturn()">Regresar</ion-button>
     <ion-title>Registro de Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,79 +11,66 @@
       <ion-title size="large">Registro de usuarios</ion-title>
     </ion-toolbar>
   </ion-header>
+  <h4>(*) Campos Obligatorios</h4>
   <ion-list>
     <ion-item>
-      <ion-label position="stacked">Nombre</ion-label>
-      <ion-input type="text" #nombre></ion-input>
+      <p>Nombre* </p> <ion-input type="text" #nombre></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Apellido Paterno</ion-label>
-      <ion-input type="text" #app></ion-input>
+      <p>Apellido Paterno* </p><ion-input type="text" #app></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Apellido Materno</ion-label>
-      <ion-input type="text" #apm></ion-input>
+      <p>Apellido Materno* </p><ion-input type="text" #apm></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Teléfono fijo</ion-label>
-      <ion-input type="tel" #telefonoFijo></ion-input>
+      <p>Telefono Fijo</p><ion-input type="tel" #telefonoFijo></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked"> Celular</ion-label>
-      <ion-input type="tel" #celular></ion-input>
+      <p>Celular* </p><ion-input type="tel" #celular></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Correo Electrónico</ion-label>
-      <ion-input type="email" #email></ion-input>
+      <p>Correo Electrnonico* </p><ion-input type="email" #email></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Constraseñá</ion-label>
-      <ion-input type="password" #contrasena></ion-input>
+      <p>Password*  </p><ion-input type="password" #contrasena></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Calle</ion-label>
-      <ion-input type="text" #calle></ion-input>
+      <p>Calle* </p> <ion-input type="text" #calle></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Número Interior</ion-label>
-      <ion-input type="text" #inte></ion-input>
+      <p>Numero Interior* </p><ion-input type="text" #inte></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Número Exterior</ion-label>
-      <ion-input type="text" #exte></ion-input>
+      <p>Numero Exterior </p><ion-input type="text" #exte></ion-input>
+    </ion-item>
+
+    <ion-item> 
+      <p>Colonia* </p><ion-input type="text" #colonia></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Colonia</ion-label>
-      <ion-input type="text" #colonia></ion-input>
+      <p>Municipio* </p><ion-input type="text" #municipio></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Municipio</ion-label>
-      <ion-input type="text" #municipio></ion-input>
+      <p>Estado* </p><ion-input type="text" #estado></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Estado</ion-label>
-      <ion-input type="text" #estado></ion-input>
+      <p>Codigo Postal* </p><ion-input type="text" #cp></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Código Postal</ion-label>
-      <ion-input type="text" #cp></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Rol</ion-label>
+      <p>Rol* </p>
       <ion-select #idRol>
         <ion-select-option value="1">Vendedor</ion-select-option>
         <ion-select-option value="2">Donador</ion-select-option>

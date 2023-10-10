@@ -1,17 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-button (click)="HomeReturn()"><ion-icon></ion-icon> Regresar</ion-button>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label position="stacked">Correo Electrónico</ion-label>
-    <ion-input type="email" #email></ion-input>
+    <p>Correo Electronico </p><ion-input type="email" #email></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Contraseña</ion-label>
-    <ion-input type="password" #contra></ion-input>
+    
+    <p>Password </p><ion-input type="password" #contra></ion-input>
   </ion-item>
   <ion-button (click)="loginUser(email,contra)">Iniciar Sesión</ion-button>
 
