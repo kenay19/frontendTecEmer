@@ -18,6 +18,10 @@ export class AuthenticateService {
     return this.http.post('http://localhost:3000/authentication/UsersLogin',{email, contrasena});
   }
 
+  loginWithFace(img) {
+    return this.http.post('http://localhost:3000/authentication/LoginWithFace',{img});
+  }
+
   getUser(){
     return this.user;
   }
