@@ -1,6 +1,6 @@
-import { Component,ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {  Camera, CameraResultType, CameraSource} from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AuthenticateService } from '../service/authenticate.service';
 
 @Component({
@@ -9,38 +9,39 @@ import { AuthenticateService } from '../service/authenticate.service';
   styleUrls: ['./camera-log.page.scss'],
 })
 export class CameraLogPage implements OnInit {
-
   imagenCapturada: string = null;
   mediaStream: MediaStream;
   capturingFrames: boolean = true;
+  stream!: any;
+  constructor(
+    private router: Router,
+    private elementRef: ElementRef,
+    private auth: AuthenticateService
+  ) {}
 
-  constructor(private router:Router, private elementRef:ElementRef,private auth:AuthenticateService) {}
-
- 
-
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   ionViewWillEnter() {
     this.abrirCamaraConVistaPrevia();
-    this.captureFrames()
+    this.captureFrames();
   }
 
   async abrirCamaraConVistaPrevia() {
-    const previewElement = this.elementRef.nativeElement.querySelector('#camara-preview');
+    const previewElement =
+      this.elementRef.nativeElement.querySelector('#camara-preview');
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      this.stream = await navigator.mediaDevices.getUserMedia({ video: true });
 
-      previewElement.srcObject = stream;
-      previewElement.play()
+      previewElement.srcObject = this.stream;
+      previewElement.play();
     } catch (err) {
       console.error('Error al acceder a la cámara:', err);
     }
   }
 
   async captureFrames() {
-    const video = this.elementRef.nativeElement.querySelector('#camara-preview');;
+    const video =
+      this.elementRef.nativeElement.querySelector('#camara-preview');
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
@@ -49,30 +50,32 @@ export class CameraLogPage implements OnInit {
 
       // Obtener la matriz de píxeles del fotograma
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-      
+
       const pixelData = await this.compressImageDataToJPEG(imageData);
       // Enviar la matriz de píxeles al backend
-      console.log(imageData)
-      this.auth.loginWithFace(imageData).subscribe(data=>{
-      console.log(data)
-     });
+      console.log(imageData);
+      this.auth.loginWithFace(imageData).subscribe((data) => {
+        console.log(data);
+      });
 
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
       await new Promise((resolve) => setTimeout(resolve, 1000));
     }
   }
 
-  navigateToLogin(){
-    this.router.navigate(['/login'])
+  navigateToLogin() {
+    this.stopVideo();
+    this.router.navigate(['/login']);
   }
 
-  navigateToRegisterUser(){
-    this.router.navigate(['/registro-usuarios','camera']);
+  navigateToRegisterUser() {
+    this.stopVideo();
+    this.router.navigate(['/registro-usuarios', 'camera']);
   }
 
   ionViewWillLeave() {
     this.capturingFrames = false;
-    
+
     if (this.mediaStream) {
       const tracks = this.mediaStream.getTracks();
       tracks.forEach((track) => track.stop());
@@ -84,7 +87,7 @@ export class CameraLogPage implements OnInit {
     canvas.height = imageData.height;
     const context = canvas.getContext('2d');
     context.putImageData(imageData, 0, 0);
-  
+
     // Convierte el contenido del canvas a un Blob en formato JPEG
     return new Promise((resolve) => {
       canvas.toBlob((blob) => {
@@ -93,7 +96,20 @@ export class CameraLogPage implements OnInit {
     });
   }
 
-  HomeReturn(){
-    this.router.navigate(['/'])
+  HomeReturn() {
+    this.stopVideo();
+    this.router.navigate(['/']);
+  }
+
+  stopVideo() {
+    if (this.stream) {
+      // Comprueba si el stream está definido
+      const tracks = this.stream.getTracks();
+
+      tracks.forEach((track) => {
+        // Detiene cada pista del stream
+        track.stop();
+      });
+    }
   }
 }
