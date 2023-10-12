@@ -15,17 +15,16 @@ export class ListadoVendedorComponent  implements OnInit {
   constructor(private products:ProductsService, private auth:AuthenticateService) { }
 
   ngOnInit() {
-    
+    const {idUsuario} = this.auth.getUser(); 
+    this.products.getProducts(idUsuario).subscribe((productos) => {
+     for(let i  = 0; i < Object.keys(productos).length; i++) {
+       this.datos.push(productos[i])
+     }
+   })
+   console.log(this.datos)
   }
 
-  ionViewWillEnter() {
-    const {idUsuario} = this.auth.getUser(); 
-     this.products.getProducts(idUsuario).subscribe((productos) => {
-      for(let i  = 0; i < Object.keys(productos).length; i++) {
-        this.datos.push(productos[i])
-      }
-    })
-  }
+  
   sortVenta(){
     console.log('venta');
   }
