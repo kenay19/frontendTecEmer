@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 
 import { MedictoolsService } from '../../service/medictools.service';
 import { AuthenticateService } from 'src/app/service/authenticate.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-formulario-vendedor',
   templateUrl: './formulario-vendedor.component.html',
@@ -12,7 +14,9 @@ export class FormularioVendedorComponent implements OnInit {
   constructor(
     private medictools: MedictoolsService,
     private crud: AuthenticateService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private alertController:AlertController,
+    private router: Router
   ) {}
   imagenes: any[] = [];
   mediaStream: MediaStream;
@@ -29,8 +33,8 @@ export class FormularioVendedorComponent implements OnInit {
       this.tomarFoto = true;
       this.capturingFrames = true;
       this.captureFrames();
-      console.log(this.imagenes);
       this.stopVideo();
+      console.log(this.imagenes)
     }
   }
 
@@ -55,13 +59,54 @@ export class FormularioVendedorComponent implements OnInit {
         nombre.value,
         descripcion.value,
         costo.value,
-        this.crud.getUser().idUsuario
+        this.crud.getUser().idUsuario,
+        this.imagenes
       )
       .subscribe((data) => {
-        console.log(data);
+        if (!data.hasOwnProperty('message')) {
+           this.alerta({header:'error',message:'no se pudo agregar correctamente'},nombre,descripcion,costo)
+        }else{
+          this.alerta({header:'exito',message:data['message']},nombre,descripcion,costo)
+        }
       });
   }
 
+
+  async alerta(mensajes,nombre,descripcion,costo){
+    let buttons;
+    if(mensajes.header === 'error'){
+       buttons = [
+        {
+          text: 'Reintentar',
+          handler: () =>{
+            nombre.value = '',
+            descripcion.value = ''
+            costo.value = ''
+            this.imagenes = []
+          }
+        }
+      ]
+    }else{
+       buttons = [
+        {
+          text: 'Agregar Otro',
+          handler: () =>{
+            nombre.value = '',
+            descripcion.value = ''
+            costo.value = ''
+            this.imagenes = []
+          }
+        }
+      ]
+    }
+    
+    const alerta = await this.alertController.create({
+      header : mensajes.header,
+      message: mensajes.message,
+      buttons: buttons
+    });
+    alerta.present();
+  }
   async abrirCamaraConVistaPrevia() {
     const previewElement =
       this.elementRef.nativeElement.querySelector('#video');
@@ -96,18 +141,18 @@ export class FormularioVendedorComponent implements OnInit {
    */
   async captureFrames() {
     const video = this.elementRef.nativeElement.querySelector('#video');
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    let canvas = document.createElement('canvas');
+    let context = canvas.getContext('2d');
     if (this.capturingFrames) {
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       // Obtener la matriz de píxeles del fotograma
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-      this.imagenes.push(imageData);
-      // const pixelData = await this.compressImageDataToJPEG(imageData);
-      // Enviar la matriz de píxeles al backend
 
-      // Espera un breve período de tiempo antes de capturar el siguiente fotograma
+     
+      this.imagenes.push({matriz: imageData.data, width: imageData.width, height: imageData.height});
       await new Promise((resolve) => setTimeout(resolve, 10000));
     }
   }
+
+  
 }

@@ -35,13 +35,11 @@ equipos !: any;
     if(this.show === 'listado'){
       this.show = 'formulario'    
     }
-    console.log(this.show);
   }
   changeFromFormulario() {
     if(this.show === 'formulario'){
       this.show = 'listado'    
     }
-    console.log(this.show);
   }
 
   logOut(){

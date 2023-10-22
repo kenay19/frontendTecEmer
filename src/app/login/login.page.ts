@@ -24,15 +24,16 @@ export class LoginPage implements OnInit {
 
    loginUser(email,contrasena) {
     this.crud.loginUser(email.value,contrasena.value).subscribe(data => {
-      console.log(data[0])
+      console.log(data)
+      if(data.hasOwnProperty('error')){
+        this.crearAlerta(data['error'],email,contrasena)
+        return
+      }
       if(data[0].hasOwnProperty('idUsuario') ){
         this.crud.setUser(data[0])
-        
         this.router.navigate([this.direccion[data[0]['idRol']-1]])
       }
-      if(data[0].hasOwnProperty('error')){
-        this.crearAlerta(data['error'],email,contrasena)
-      }
+      
     });
   }
 
