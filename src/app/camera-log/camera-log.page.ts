@@ -75,7 +75,11 @@ export class CameraLogPage implements OnInit {
       const rgb =  this.convertToRGB(resizedImageData)
       console.log(rgb.data);
       await this.auth.loginWithFace(rgb.data).subscribe((data) => {
-        console.log(data);
+        try{
+          console.log(data);
+        }catch(err){
+          console.log(err);
+        }
       });
     
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
