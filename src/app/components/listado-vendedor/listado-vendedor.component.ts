@@ -28,14 +28,14 @@ export class ListadoVendedorComponent implements OnInit {
     for (let i = 0; i < Object.keys(productos).length; i++) {
       this.datos.push(productos[i][0]);
 
-      for (let j = 0; j < this.datos[i]['imagenes'].length; j++) {
+      /*for (let j = 0; j < this.datos[i]['imagenes'].length; j++) {
         try {
           const imagen = await this.products.getImageProducts(this.datos[i]['imagenes'][j][0]).toPromise();
           this.datos[i]['imagenes'][j][0] = imagen;
         } catch (error) {
           console.error(`Error al cargar la imagen: ${error}`);
         }
-      }
+      }*/
     }
 
     console.log(this.datos);
