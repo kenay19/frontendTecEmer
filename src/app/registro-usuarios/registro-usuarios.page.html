@@ -1,82 +1,86 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-button (click)="PageReturn()">Regresar</ion-button>
-    <ion-title>Registro de Usuarios</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="custom-form">
+  <ion-title size="large" class="form-title">Registro de usuarios</ion-title>
+  <div class="form-container">
+    <div class="left-column">
+      <form>
+        <ion-item>
+          <ion-input label="Nombre *" type="text" #nombre></ion-input>
+        </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Registro de usuarios</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <h4>(*) Campos Obligatorios</h4>
-  <ion-list>
-    <ion-item>
-      <p>Nombre* </p> <ion-input type="text" #nombre></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Apellido Paterno *" type="text" #app></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Apellido Paterno* </p><ion-input type="text" #app></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Apellido Materno *" type="text" #apm></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Apellido Materno* </p><ion-input type="text" #apm></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Telefono Fijo *" maxlength="10" type="tel" #telefonoFijo></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Telefono Fijo</p><ion-input type="tel" #telefonoFijo></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Celular *" maxlength="10" type="tel" #celular></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Celular* </p><ion-input type="tel" #celular></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Correo Electrónico *" type="email" #email></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Correo Electrnonico* </p><ion-input type="email" #email></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Contraseña *" type="password" #contrasena></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Password*  </p><ion-input type="password" #contrasena></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Calle *" type="text" #calle></ion-input>
+        </ion-item>
+      </form>
+    </div>
+    <div class="right-column">
+      <form>
+        <ion-item>
+          <ion-input label="Número Interior *" type="text" #inte></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Calle* </p> <ion-input type="text" #calle></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Número Exterior *" type="text" #exte></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Numero Interior* </p><ion-input type="text" #inte></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Estado *" type="text" #estado></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Numero Exterior </p><ion-input type="text" #exte></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Municipio *" type="text" #municipio></ion-input>
+        </ion-item>
 
-    <ion-item> 
-      <p>Colonia* </p><ion-input type="text" #colonia></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Colonia *" type="text" #colonia></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Municipio* </p><ion-input type="text" #municipio></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-input label="Código Postal *" type="text" #cp></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <p>Estado* </p><ion-input type="text" #estado></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <p>Codigo Postal* </p><ion-input type="text" #cp></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <p>Rol* </p>
-      <ion-select #idRol>
-        <ion-select-option value="1">Vendedor</ion-select-option>
-        <ion-select-option value="2">Donador</ion-select-option>
-        <ion-select-option value="3">Solicitante</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol,contrasena)">Registrar</ion-button>
+        <ion-item>
+          <ion-select class="lista" label="Rol *" #idRol>
+            <ion-select-option value="1">Vendedor</ion-select-option>
+            <ion-select-option value="2">Donador</ion-select-option>
+            <ion-select-option value="3">Solicitante</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </form>
+    </div>
+  </div>
+  <div class="btn-container">
+    <ion-button class="btn_salir" (click)="PageReturn()">Regresar</ion-button>
+    <ion-button class="button" (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol,contrasena)">
+      <span class="circle1"></span>
+      <span class="circle2"></span>
+      <span class="circle3"></span>
+      <span class="circle4"></span>
+      <span class="circle5"></span>
+      <span class="text"> Registrar </span>
+    </ion-button>
+  </div>
 </ion-content>

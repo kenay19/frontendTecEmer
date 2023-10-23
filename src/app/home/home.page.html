@@ -1,5 +1,3 @@
-
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -8,9 +6,11 @@
   </ion-header>
 
   <div id="container">
-    <img src="../../assets/logo.jpeg" alt="Imagen Ovalada" class="oval-img" >
+    <div class="oval-container">
+      <img src="../../assets/logo.jpeg" alt="Imagen Ovalada" class="oval-img" >
+    </div>
     <ion-buttons>
-      <ion-button (click)="navigateToCameraLog()">
+      <ion-button (click)="navigateToCameraLog()" class="bn3637 bn36">
         Continuar
       </ion-button>
     </ion-buttons>

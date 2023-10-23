@@ -1,19 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-button (click)="HomeReturn()"><ion-icon></ion-icon> Regresar</ion-button>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <p>Correo Electronico </p><ion-input type="email" #email></ion-input>
-  </ion-item>
-  <ion-item>
-    
-    <p>Password </p><ion-input type="password" #contra></ion-input>
-  </ion-item>
-  <ion-button (click)="loginUser(email,contra)">Iniciar Sesión</ion-button>
-
-  <p class="ion-text-center">¿No tienes una cuenta? <a (click)="cambiopagina()">Regístrate aquí</a></p>
+  <div class="container">
+    <ion-title>Login</ion-title>
+    <form>
+      <div class="form__group form__div">
+        <span><i class="fa-solid fa-envelope"></i></span>
+        <ion-input class="campo" placeholder="Dirección de correo electrónico" type="email" #email></ion-input>
+      </div>
+      <div class="form__group form__div">
+        <span><i class="fa-solid fa-lock"></i></span>
+        <ion-input class="campo" placeholder="Contraseña" type="password" #contra></ion-input>
+      </div>
+      <div class="form__group">
+        <ion-button (click)="loginUser(email,contra)">Acceder</ion-button>
+      </div>
+      <div class="form__group__enlace">
+        <p class="enlace_1">¿No tienes una cuenta? <a class="enlace" (click)="cambiopagina()">Regístrate aquí</a></p>
+        <a class="enlace" id="btn_salir" (click)="HomeReturn()">Regresar</a>
+      </div>
+    </form>
+  </div>
 </ion-content>

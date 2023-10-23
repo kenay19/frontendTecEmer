@@ -1,19 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-button (click)="HomeReturn()">Regresar</ion-button>
-    <ion-title>cameraLog</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
+
+  <div class="main-container">
+
+    <div class="button-container">    
+      <ion-button (click)="navigateToLogin()" class="custom-button" id="bn1">
+        INGRESAR
+      </ion-button>
+      <ion-button (click)="navigateToRegisterUser()" class="custom-button" id="bn2">
+        REGISTRARSE
+      </ion-button>
+    </div>
+    <ion-button (click)="HomeReturn()" class="custom-button" id="bn3">
+      Regresar
+    </ion-button>
+  </div>
   
-  <video id="camara-preview" class="oval-img"></video>
-  <ion-buttons>
-    <ion-button (click)="navigateToLogin()">
-      Logeo con email 
-    </ion-button>
-    <ion-button (click)="navigateToRegisterUser()">
-      Registrase
-    </ion-button>
-  </ion-buttons>
+  <div class="video-container">
+    <video id="camara-preview" class="oval-img"></video>
+  </div>
 </ion-content>
