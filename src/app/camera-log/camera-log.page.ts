@@ -66,16 +66,20 @@ export class CameraLogPage implements OnInit {
 
       // Obtener la matriz de píxeles del fotograma
       const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
+      canvas.width = 150;
+      canvas.height = 150;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const resizedImageData = context.getImageData(0,0,150,150)
      // const pixelData = await this.compressImageDataToJPEG(imageData);
       // Enviar la matriz de píxeles al backend
-      console.log(imageData);
-      this.auth.loginWithFace(imageData).subscribe((data) => {
+      const rgb =  this.convertToRGB(resizedImageData)
+      console.log(rgb.data);
+      await this.auth.loginWithFace(rgb.data).subscribe((data) => {
         console.log(data);
       });
-
+    
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 10000));
     }
   }
 
@@ -137,4 +141,34 @@ export class CameraLogPage implements OnInit {
       });
     }
   }
+
+ convertToRGB(sRGBImageData) {
+    const width = sRGBImageData.width;
+    const height = sRGBImageData.height;
+    const sRGBData = sRGBImageData.data;
+  
+    // Crear un nuevo ImageData en formato RGB
+    const rgbData = new ImageData(width, height);
+  
+    // Realizar la conversión de sRGB a RGB
+    for (let i = 0; i < sRGBData.length; i += 4) {
+      // sRGB utiliza una corrección gamma, que debemos deshacer
+      const r = Math.pow(sRGBData[i] / 255, 2.2) * 255;
+      const g = Math.pow(sRGBData[i + 1] / 255, 2.2) * 255;
+      const b = Math.pow(sRGBData[i + 2] / 255, 2.2) * 255;
+  
+      // Copiar los valores convertidos al nuevo objeto ImageData en formato RGB
+      rgbData.data[i] = r;
+      rgbData.data[i + 1] = g;
+      rgbData.data[i + 2] = b;
+      rgbData.data[i + 3] = sRGBData[i + 3]; // Alfa (sin cambios)
+    }
+  
+    return rgbData;
+  }
+ 
+  
+  
+  
+  
 }

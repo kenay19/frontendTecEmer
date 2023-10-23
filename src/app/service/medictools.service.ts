@@ -8,7 +8,7 @@ export class MedictoolsService {
 
   constructor(private crud:HttpClient) { }
 
-  guardar(nombre, descripcion, costo, idVendedor) {
-    return this.crud.post('http://localhost:3000/medictools/register', {nombre, descripcion, costo, idVendedor})
+  guardar(nombre, descripcion, costo, idVendedor,imagenes) {
+    return this.crud.post('http://localhost:3000/medictools/register', {nombre, descripcion, costo, idVendedor,imagenes})
   }
 }

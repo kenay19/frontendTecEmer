@@ -12,8 +12,5 @@ export class FormularioDonadorComponent  implements OnInit {
 
   ngOnInit() {}
 
-  guardar(nombre, descripcion, costo) {
-    this.medictools.guardar(nombre.value, descripcion.value, costo.value, this.crud.getUser().idUsuario).subscribe(data => {console.log(data)})
-  }
-
+ 
 }

@@ -10,4 +10,8 @@ export class ProductsService {
   getProducts(idVendedor){
     return this.product.post('http://localhost:3000/medictools/getProducts',{idVendedor})
   }
+
+  getImageProducts(idImagen){
+    return this.product.post('http://localhost:3000/medictools/getImageProducts',idImagen)
+  }
 }
