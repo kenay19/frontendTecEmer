@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   }
 
   cambiopagina(){
-      this.router.navigate(['/registro-usuarios','login']);
+      this.router.navigate(['/register']);
   }
 
    loginUser(email,contrasena) {

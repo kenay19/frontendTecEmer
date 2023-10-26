@@ -12,6 +12,14 @@ export class RegistroUsuariosPage implements OnInit {
   constructor(private crud:AuthenticateService, private router: Router,private route: ActivatedRoute, private alertController:AlertController) { }
 
   ngOnInit() {
+   
+  }
+
+  generateCoordenadas(address){
+    console.log(address)
+    let cad = 'calle '+address.calle+' '+address.inte+', colonia '+address.colonia+', '+address.municipio+', '+address.estado+', '+address.cp
+    console.log(cad)
+    return this.crud.generateCoordenates(cad)
   }
 
   registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena) {
@@ -19,13 +27,44 @@ export class RegistroUsuariosPage implements OnInit {
       this.alerta(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena) 
       return
     }
-    this.crud.registraruser(nombre.value, app.value, apm.value, telefonoFijo.value, celular.value, email.value, calle.value, inte.value, exte.value, colonia.value, municipio.value, estado.value, cp.value, idRol.value, contrasena.value).subscribe((data)=> {
-      if(data.hasOwnProperty('message')){
-        this.router.navigate(['/login']);
-      }else{
-        // dejamos para despues la parte en la que mande error el mysql
+    this.generateCoordenadas({calle: calle.value,inte: inte.value,colonia:colonia.value,municipio:municipio.value,estado:estado.value,cp:cp.value}).subscribe(data =>{
+     
+      if(data['status'] ==='OK'){
+        const latitud = data['results'][0].geometry.location.lat;
+        const alt = data['results'][0].geometry.location.lng;  
+        this.route.params.subscribe(async(params) => {
+          const datos = {
+            nombre: nombre.value,
+            app: app.value,
+            apm: apm.value,
+            telefonoFijo: telefonoFijo.value,
+            celular: celular.value,
+            email: email.value,
+            calle: calle.value,
+            inte: inte.value,
+            exte: exte.value,
+            colonia: colonia.value,
+            municipio: municipio.value,
+            estado: estado.value,
+            cp: cp.value,
+            idRol: idRol.value,
+            contrasena: contrasena.value,
+            lat: latitud,
+            alt,
+            vector1: params[0],
+            vector2: params[1],
+            vector3: params[2],
+          }
+          this.crud.registraruser(datos).subscribe((data)=> {
+            if(data['message'] === 'Usuario Registrado Correctamente'){
+              this.router.navigate(['/camera-log'])
+            }
+          });
+        })
       }
-    });
+      
+    })
+    
   }
 
   PageReturn(){

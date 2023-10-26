@@ -9,19 +9,33 @@ export class AuthenticateService {
   user!:any ;
   constructor(private http:HttpClient) { }
 
-  registraruser(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena){
-    console.log({nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena})
-    return this.http.post('http://localhost:3000/authentication/UsersRegisters',{nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol, contrasena});
+  registraruser(datos){
+    return this.http.post('http://localhost:3000/authentication/UsersRegisters',datos);
+  }
+
+  generateCoordenates(address){
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCEQ4GIzJBOKWYcEnFd4ZZQMrTU7Uxc8kM&address={'+address+'}')
   }
 
   loginUser(email,contrasena){
     return this.http.post('http://localhost:3000/authentication/UsersLogin',{email, contrasena});
   }
 
-  loginWithFace(img) {
-    return this.http.post('http://localhost:3000/authentication/LoginWithFace',{img});
+  cargarImagenesLogin(img) {
+    return this.http.post('http://localhost:3000/authentication/CargarImagenesLogin',{img});
   }
 
+  cargarImagenesRegistro(img){
+    return this.http.post('http://localhost:3000/authentication/CargarImagenesRegistro',{img});
+  }
+
+  generateVectorCaracteristicas(tipo){
+    return this.http.post('http://localhost:3000/authentication/LoginWithFace',{tipo});
+  }
+
+  logueoFacial(tipo){
+    return this.http.post('http://localhost:3000/authentication/LoginFacial',{tipo});
+  }
   getUser(){
     return this.user;
   }

@@ -9,13 +9,14 @@ import { AuthenticateService } from '../service/authenticate.service';
 })
 
 /**
- * Clase para el logeo con rostro 
+ * Clase para el logeo con rostro
  */
 export class CameraLogPage implements OnInit {
   imagenCapturada: string = null;
   mediaStream: MediaStream;
   capturingFrames: boolean = true;
   stream!: any;
+  direccion: String[] = ['/vendedor','/donador','/solicitante']
 
   constructor(
     private router: Router,
@@ -69,19 +70,35 @@ export class CameraLogPage implements OnInit {
       canvas.width = 150;
       canvas.height = 150;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const resizedImageData = context.getImageData(0,0,150,150)
-     // const pixelData = await this.compressImageDataToJPEG(imageData);
+      const resizedImageData = context.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+      // const pixelData = await this.compressImageDataToJPEG(imageData);
       // Enviar la matriz de píxeles al backend
-      const rgb =  this.convertToRGB(resizedImageData)
-      console.log(rgb.data);
-      await this.auth.loginWithFace(rgb.data).subscribe((data) => {
-        try{
-          console.log(data);
-        }catch(err){
-          console.log(err);
-        }
-      });
-    
+
+      try {
+        await this.auth
+          .cargarImagenesLogin(resizedImageData.data)
+          .subscribe((data) => {
+            if (data['message'] === 'Imagen cargada correctamente') {
+              this.auth
+                .logueoFacial('login')
+                .subscribe((data) => {
+                  if(data[0].hasOwnProperty('idUsuario') ){
+                    this.auth.setUser(data[0])
+                    this.stopVideo()
+                    this.router.navigate([this.direccion[data[0]['idRol']-1]])
+                  }
+                });
+            }
+          });
+      } catch (error) {
+        console.error(error);
+      }
+
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
       await new Promise((resolve) => setTimeout(resolve, 10000));
     }
@@ -100,31 +117,12 @@ export class CameraLogPage implements OnInit {
    */
   navigateToRegisterUser() {
     this.stopVideo();
-    this.router.navigate(['/registro-usuarios', 'camera']);
+    this.router.navigate(['/register']);
   }
 
+  
   /**
-   * De la matriz obtenida en la funcion captureFrames la vamos a comprimir para facilitar el envio de datos hacia
-   * el servidor
-   * @param imageData matriz de la imagen 
-   * @returns un blob que contiene la matriz en formato jpeg
-   */
-  async compressImageDataToJPEG(imageData) {
-    const canvas = document.createElement('canvas');
-    canvas.width = imageData.width;
-    canvas.height = imageData.height;
-    const context = canvas.getContext('2d');
-    context.putImageData(imageData, 0, 0);
-
-    // Convierte el contenido del canvas a un Blob en formato JPEG
-    return new Promise((resolve) => {
-      canvas.toBlob((blob) => {
-        resolve(blob);
-      }, 'image/jpeg');
-    });
-  }
-/**
-   * Detiene el video generado y redirrecciona al usuario a la pagina de inicio 
+   * Detiene el video generado y redirrecciona al usuario a la pagina de inicio
    */
   HomeReturn() {
     this.stopVideo();
@@ -146,33 +144,5 @@ export class CameraLogPage implements OnInit {
     }
   }
 
- convertToRGB(sRGBImageData) {
-    const width = sRGBImageData.width;
-    const height = sRGBImageData.height;
-    const sRGBData = sRGBImageData.data;
-  
-    // Crear un nuevo ImageData en formato RGB
-    const rgbData = new ImageData(width, height);
-  
-    // Realizar la conversión de sRGB a RGB
-    for (let i = 0; i < sRGBData.length; i += 4) {
-      // sRGB utiliza una corrección gamma, que debemos deshacer
-      const r = Math.pow(sRGBData[i] / 255, 2.2) * 255;
-      const g = Math.pow(sRGBData[i + 1] / 255, 2.2) * 255;
-      const b = Math.pow(sRGBData[i + 2] / 255, 2.2) * 255;
-  
-      // Copiar los valores convertidos al nuevo objeto ImageData en formato RGB
-      rgbData.data[i] = r;
-      rgbData.data[i + 1] = g;
-      rgbData.data[i + 2] = b;
-      rgbData.data[i + 3] = sRGBData[i + 3]; // Alfa (sin cambios)
-    }
-  
-    return rgbData;
-  }
- 
-  
-  
-  
   
 }

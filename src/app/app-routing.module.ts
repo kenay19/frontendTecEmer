@@ -45,6 +45,21 @@ const routes: Routes = [
     path: 'solicitante',
     loadChildren: () => import('./solicitante/solicitante.module').then( m => m.SolicitantePageModule)
   },
+  {
+    path: 'register',
+    children:[
+      {
+        path: '',
+        loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+      },
+      {
+        path:':origin',
+        loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+      }
+    ]
+
+  },
+
 
   
 ];
