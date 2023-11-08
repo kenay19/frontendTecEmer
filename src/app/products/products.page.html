@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div>
+    <nav id="options">
+      <ion-list>
+        <ion-item *ngFor="let imagen of imagenes">
+          <button (click)="changePrincipalImage(imagen)"><img src="{{imagen}}" alt=""></button>
+        </ion-item>
+      </ion-list>
+      <img src="{{principal}}" alt="">
+    </nav>
+    <content>
+
+      <ion-card *ngIf="user && user.idRol==1 && equipoMedico">
+        <p>Nombre</p><ion-input type="text" value="{{equipoMedico.nombre}}" #nombre></ion-input>
+        <p>Descripcion</p><ion-input type="textarea" value="{{equipoMedico.descripcion}}" #descripcion></ion-input>
+        <p>costo</p><ion-input type="numbrer" value="{{equipoMedico.costo}}" #costo></ion-input>
+        <ion-item>
+          <ion-select [(ngModel)]="equipoMedico.estado" #estado>
+            <ion-select-option value="En venta">En venta</ion-select-option>
+            <ion-select-option value="listado">Listado</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-buttons>
+          <ion-button (click)="delete(equipoMedico.idEquipoMedico)">Eliminar</ion-button>
+          <ion-button (click)="actualizar({nombre:nombre.value,descripcion:descripcion.value,costo:costo.value,estado:estado.value})">Actualizar</ion-button>
+
+        </ion-buttons>
+      </ion-card>
+    </content>
+
+
+
+  </div>
+</ion-content>

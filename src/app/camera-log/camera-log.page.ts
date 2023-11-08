@@ -21,7 +21,7 @@ export class CameraLogPage implements OnInit {
   constructor(
     private router: Router,
     private elementRef: ElementRef,
-    private auth: AuthenticateService
+    private auth: AuthenticateService,
   ) {}
 
   ngOnInit() {}
@@ -88,6 +88,8 @@ export class CameraLogPage implements OnInit {
                 .logueoFacial('login')
                 .subscribe((data) => {
                   if(data[0].hasOwnProperty('idUsuario') ){
+                    localStorage.setItem("Usuario",JSON.stringify(data[0]))
+
                     this.auth.setUser(data[0])
                     this.stopVideo()
                     this.router.navigate([this.direccion[data[0]['idRol']-1]])

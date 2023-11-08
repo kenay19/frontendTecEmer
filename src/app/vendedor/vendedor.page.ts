@@ -19,7 +19,8 @@ equipos !: any;
   }
 
   ionViewWillEnter(){
-    this.user = this.crud.getUser();
+    this.user = JSON.parse(localStorage.getItem('Usuario'));
+    console.log(this.user)
     if(this.user){
       if(this.user['idRol'] !== 1){
         this.router.navigate(['/'])
@@ -27,7 +28,7 @@ equipos !: any;
     }else{
       this.router.navigate(['/'])
     }
-    this.nombre =this.user.nombre
+    this.nombre = this.user.nombre
     
   }
 
@@ -43,7 +44,7 @@ equipos !: any;
   }
 
   logOut(){
-    this.crud.SessionOut();
+    //this.crud.SessionOut();
     this.router.navigate(['/']);
   }
 

@@ -11,7 +11,20 @@ export class ProductsService {
     return this.product.post('http://localhost:3000/medictools/getProducts',{idVendedor})
   }
 
+  getProduct(idProduct){
+    return this.product.post('http://localhost:3000/medictools/getProduct',{idProduct})
+
+  }
+
   getImageProducts(idImagen){
-    return this.product.post('http://localhost:3000/medictools/getImageProducts',idImagen)
+    return this.product.post('http://localhost:3000/medictools/getImageProducts',idImagen,{ responseType: 'blob' })
+  }
+
+  updateProduct(datos){
+    return this.product.put('http://localhost:3000/medictools/updateProduct',datos);
+  }
+
+  deleteProduct(idEquipoMedico){
+    return this.product.post('http://localhost:3000/medictools/deleteProduct',{idEquipoMedico})
   }
 }

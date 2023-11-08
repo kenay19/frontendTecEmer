@@ -53,13 +53,13 @@ export class FormularioVendedorComponent implements OnInit {
     }
   }
 
-  guardar(nombre, descripcion, costo) {
+ guardar(nombre, descripcion, costo) {
     this.medictools
       .guardar(
         nombre.value,
         descripcion.value,
         costo.value,
-        this.crud.getUser().idUsuario,
+        JSON.parse(localStorage.getItem('Usuario')).idUsuario,
         this.imagenes
       )
       .subscribe((data) => {

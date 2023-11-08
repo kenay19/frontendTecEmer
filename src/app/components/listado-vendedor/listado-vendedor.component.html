@@ -1,23 +1,28 @@
 <div>
     <nav>
-        <ion-list>
+        <ion-list *ngIf="copyDatos && datos">
             <ion-item *ngFor="let estado of estados">
-                <button (click)="estado.function()">{{estado.name}}</button>
+                <button (click)="filtrado(estado.name)">{{estado.name}}</button>
             </ion-item>
         </ion-list>
     </nav>
 
     <div>
         <ion-list>
-            <ion-item *ngFor="let dato of datos">
+            <ion-item *ngFor="let dato of copyDatos">
+
                 <a href="/products/{{dato.idEquipoMedico}}">
+                    <img src="{{dato.imagenes[0][0]}}" alt="">
                     <p>{{dato.nombre}}</p>
                     <p>{{dato.descripcion}}</p>
                     <p>{{dato.costo}}</p>
                 </a>
+
+
+
             </ion-item>
         </ion-list>
     </div>
-    
+
 
 </div>

@@ -5,9 +5,11 @@ import {HttpClient, HttpRequest } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AuthenticateService {
+  user !: any
 
-  user!:any ;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient ) {
+    this.user = {}
+   }
 
   registraruser(datos){
     return this.http.post('http://localhost:3000/authentication/UsersRegisters',datos);
@@ -36,6 +38,7 @@ export class AuthenticateService {
   logueoFacial(tipo){
     return this.http.post('http://localhost:3000/authentication/LoginFacial',{tipo});
   }
+  
   getUser(){
     return this.user;
   }
@@ -46,6 +49,8 @@ export class AuthenticateService {
 
   SessionOut(){
     this.user = null;
+  
   }
+ 
 }
 
