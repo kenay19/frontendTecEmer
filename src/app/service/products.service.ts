@@ -27,4 +27,12 @@ export class ProductsService {
   deleteProduct(idEquipoMedico){
     return this.product.post('http://localhost:3000/medictools/deleteProduct',{idEquipoMedico})
   }
+
+  getProductsDonador(){
+    return this.product.get('http://localhost:3000/medictools/getProductsDonador');
+  }
+
+  findProduct(producto){
+    return this.product.post('http://localhost:3000/medictools/findProduct',[producto])
+  }
 }

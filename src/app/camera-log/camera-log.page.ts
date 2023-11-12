@@ -102,7 +102,7 @@ export class CameraLogPage implements OnInit {
       }
 
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
-      await new Promise((resolve) => setTimeout(resolve, 10000));
+      await new Promise((resolve) => setTimeout(resolve, 4000));
     }
   }
 

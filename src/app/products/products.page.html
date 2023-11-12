@@ -15,7 +15,12 @@
       <img src="{{principal}}" alt="">
     </nav>
     <content>
-
+      <ion-card *ngIf="user && user.idRol==2 && equipoMedico">
+        <ion-buttons>
+          <ion-button (click)="agregarCarrito(equipoMedico)">Agregar Carrito</ion-button>
+          <ion-button> Comprar producto </ion-button>
+        </ion-buttons>
+      </ion-card>
       <ion-card *ngIf="user && user.idRol==1 && equipoMedico">
         <p>Nombre</p><ion-input type="text" value="{{equipoMedico.nombre}}" #nombre></ion-input>
         <p>Descripcion</p><ion-input type="textarea" value="{{equipoMedico.descripcion}}" #descripcion></ion-input>

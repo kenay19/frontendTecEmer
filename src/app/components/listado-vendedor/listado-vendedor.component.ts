@@ -11,7 +11,7 @@ export class ListadoVendedorComponent implements OnInit {
   datos: any[] = [];
   copyDatos: any[] = [];
   estados: any[] = [{ name: 'En venta' }, { name: 'listado' }];
-
+  estadoSelect !: string;
   constructor(
     private products: ProductsService,
     private auth: AuthenticateService,
@@ -35,13 +35,17 @@ export class ListadoVendedorComponent implements OnInit {
       }
     }
     this.copyDatos = this.datos;
-    console.log(this.datos);
   }
 
   filtrado(filtro) {
+    if(this.estadoSelect === filtro ){
+      this.copyDatos = this.datos;
+      return
+    }
     this.copyDatos = this.datos.filter((dato) => {
       return dato.estado == filtro;
     });
+    this.estadoSelect = filtro;
   }
 
   navigateToprodcut(id) {
