@@ -20,7 +20,6 @@ equipos !: any;
 
   ionViewWillEnter(){
     this.user = JSON.parse(localStorage.getItem('Usuario'));
-    console.log(this.user)
     if(this.user){
       if(this.user['idRol'] !== 1){
         this.router.navigate(['/'])
@@ -45,6 +44,7 @@ equipos !: any;
 
   logOut(){
     //this.crud.SessionOut();
+    localStorage.removeItem('Usuario')
     this.router.navigate(['/']);
   }
 

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DonadorPageRoutingModule } from './donador-routing.module';
 import {ListadoDonadorComponent} from '../components/listado-donador/listado-donador.component';
 import {FormularioDonadorComponent} from '../components/formulario-donador/formulario-donador.component'
+import { CarritoComponent } from '../components/carrito/carrito.component';
 import { DonadorPage } from './donador.page';
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { DonadorPage } from './donador.page';
     IonicModule,
     DonadorPageRoutingModule
   ],
-  declarations: [DonadorPage,ListadoDonadorComponent,FormularioDonadorComponent]
+  declarations: [DonadorPage,ListadoDonadorComponent,FormularioDonadorComponent,CarritoComponent]
 })
 export class DonadorPageModule {}

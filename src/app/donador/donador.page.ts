@@ -8,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class DonadorPage implements OnInit {
 
   show:string = 'listado';
+  showSelected!:string
   constructor() { }
 
   ngOnInit() {
   }
 
+  changeSelected(select){
+    if(select !== this.showSelected){
+      this.show = select
+    }
+  }
+ 
 }

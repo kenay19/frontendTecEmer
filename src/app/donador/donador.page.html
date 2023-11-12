@@ -10,8 +10,9 @@
 <ion-content [fullscreen]="true">
   <nav>
     <ul>
-      <li><button >Listado de Equipo Medico</button></li>
-      <li><button  >Agregar Equipo Medico</button></li>
+      <li><button (click)="changeSelected('listado')"  >Equipo Medico Disponible</button></li>
+      <li><button  (click)="changeSelected('formularios')">Lista de espera</button></li>
+      <li><button  (click)="changeSelected('carrito')">carrito </button></li>
     </ul>
   </nav>
   <ion-content>
@@ -22,6 +23,11 @@
   <ion-content>
     <ion-item *ngIf="show === 'formularios' ">
       <app-formulario-donador></app-formulario-donador>
+    </ion-item>
+  </ion-content>
+  <ion-content>
+    <ion-item *ngIf="show === 'carrito' ">
+      <app-carrito></app-carrito>
     </ion-item>
   </ion-content>
 </ion-content>

@@ -24,7 +24,7 @@ export class ProductsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem("Usuario"))
+    this.verificarUsuario(JSON.parse(localStorage.getItem("Usuario")))
     try {
       this.route.params.forEach((param) => {
         this.products.getProduct(param['id']).subscribe(async (product) => {
@@ -53,13 +53,42 @@ export class ProductsPage implements OnInit {
     this.principal = image;
   }
 
+  agregarCarrito(producto){
+    producto.estado = "En carrito";
+    if(!localStorage.getItem('carrito')){
+      localStorage.setItem('carrito',JSON.stringify({idUsuario: this.user.idUsuario,productos: []}));
+    }
+    let carrito = JSON.parse(localStorage.getItem('carrito'))
+    carrito.productos.push(producto)
+    try {
+      localStorage.setItem('carrito',JSON.stringify(carrito))
+      this.products.updateProduct(producto).subscribe(data => {
+        if(data['affectedRows']==1){
+          this.createAlert({header: 'Producto agregado correctamente al carrito',function: () => {this.router.navigate(['/donador'])}})
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    
+    
+  }
+
+  verificarUsuario(usuario){
+    if(!usuario){
+      this.router.navigate(['/home'])
+      return 
+    }
+    this.user = usuario;
+  }
+
 
 
   actualizar(datos) {
     datos.idEquipoMedico = this.equipoMedico['idEquipoMedico'];
     this.products.updateProduct(datos).subscribe((product) => {
       if(product['affectedRows']==1){
-        this.createAlert({header: 'Producto Actualizado Correctamente'})
+        this.createAlert({header: 'Producto Actualizado Correctamente',function: () => {this.router.navigate(['/vendedor'])}})
       }
     });
   }
@@ -79,9 +108,7 @@ export class ProductsPage implements OnInit {
       header: message.header,
       buttons: [{
         text: 'ok',
-        handler: () => {
-          this.router.navigate(['/vendedor'])
-        }
+        handler: message.function
       }]
     })
     alerta.present();
