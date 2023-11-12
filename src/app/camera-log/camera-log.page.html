@@ -1,7 +1,10 @@
 <ion-content [fullscreen]="true">
 
+  <div class="video-container">
+    <video id="camara-preview" class="oval-img"></video>
+  </div>
+  
   <div class="main-container">
-
     <div class="button-container">    
       <ion-button (click)="navigateToLogin()" class="custom-button" id="bn1">
         INGRESAR
@@ -10,12 +13,9 @@
         REGISTRARSE
       </ion-button>
     </div>
-    <ion-button (click)="HomeReturn()" class="custom-button" id="bn3">
+    <ion-button (click)="HomeReturn()" class="btn_regresar">
       Regresar
     </ion-button>
   </div>
   
-  <div class="video-container">
-    <video id="camara-preview" class="oval-img"></video>
-  </div>
 </ion-content>

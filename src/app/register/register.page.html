@@ -1,13 +1,26 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <p >Numero de Fotos tomadas {{intentosNum}}</p>
-  <div class="video-container">
-    <video id="video" controls ></video>
+  <div class="container-left">
+    <p class="photo-counter">Número de fotos tomadas {{intentosNum}}</p>
+    <div class="video-container">
+      <video id="video" controls></video>
+    </div>
+    <ion-button (click)="showFoto()">Tomar foto</ion-button>
   </div>
-  <ion-button (click)="showFoto()"> Tomar Foto</ion-button>
+  <div class="photo-container">
+    <img class="photo" src="../../assets/johnny_perfil_si.png">
+    <img class="photo" src="../../assets/chavo_si.png">
+    <img class="photo" src="../../assets/Dross_perfil_si.png">
+    <img class="photo" src="../../assets/amlo_perfil_si.png">
+  </div>
+  <div class="label-container">
+    <ion-label>1. La cara debe estar claramente visible, sin obstrucciones.</ion-label>
+    <ion-label>2. La iluminación debe ser uniforme y no generar sombras pronunciadas en el rostro.</ion-label>
+    <ion-label>3. Evite cualquier tipo de accesorio facial, como gafas de sol o sombreros.</ion-label>
+    <ion-label>4. La posición de la cabeza debe ser frontal, evitando inclinaciones excesivas.</ion-label>
+  </div>
 </ion-content>
+

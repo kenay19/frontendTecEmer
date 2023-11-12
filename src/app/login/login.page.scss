@@ -1,114 +1,248 @@
-ion-content {
-    --background: url('../../assets/large-triangles.svg') no-repeat center/cover;
-    font-family: 'Poppins';
-}
+/**Escritorio**/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@media (min-width: 991px) {
+    .movil {
+        display: none;
+    }
+    ion-content {
+        --background: url('../../assets/large-triangles.svg') no-repeat center/cover;
+        font-family: 'Poppins';
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .container {
+        width: 450px;
+        padding: 20px;
+        border-radius: 15px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin: auto;
+        margin-top: 30px;
+    }
+    
+    ion-title {
+        color: #607d8b;
+        font-size: 38px;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .form__div {
+        width: 100%;
+        border: solid 1px rgb(145, 145, 145);
+        padding: 10px 25px;
+        border-radius: 20px;
+    }
+    
+    ion-input {
+        border: none;
+        outline: none;
+        padding: 10px;
+        --color: #444242;
+    }
+    
+    span {
+        color: rgb(145, 145, 145);
+    }
+    
+    ion-button {
+        width: 100%;
+        padding: 12px 15px;
+        --background: #7ac0e4;
+        border: none;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    ion-button:hover {
+        --background: #619ebd;
+    }
+    
+    .enlace {
+        text-align: center;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .form__group__enlace {
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    hr {
+        width: 100%;
+    }
+    
+    p {
+        text-align: center;
+        font-size: 14px;
+        color: #444242;
+    }
+    
+    .div__group {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .enlace_1 {
+        font-size: 17px;
+        text-decoration: none;
+    }
+    
+    #btn_salir {
+        text-decoration: none;
+    }
+    
+    #btn_salir:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    
+    .enlace_1 a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #007bff; /* Cambia el color al pasar el cursor */
+    }
 }
+/**Movil**/
 
-.container {
-    width: 450px;
-    padding: 20px;
-    border-radius: 15px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin: auto;
-    margin-top: 30px;
-}
+@media (max-width: 767px) {
+    .desktop {
+        display: none;
+    }
+    ion-content {
+        --background: url('../../assets/large-triangles.svg') no-repeat center/cover;
+        font-family: 'Poppins';
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-ion-title {
-    color: #607d8b;
-    font-size: 38px;
-}
+    .container {
+        height: 420px;
+        width: 320px;
+        padding: 20px;
+        border-radius: 15px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin: auto;
+        margin-top: 150px;
+    }
+    
+    ion-title {
+        position: relative;
+        top: 10px;
+        color: #4c5f68;
+        font-size: 38px;
+    }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-}
+    form {
+        margin-top: 3px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .form__div {
+        width: 100%;
+        border: solid 1px rgb(145, 145, 145);
+        padding: 10px 25px;
+        border-radius: 20px;
+    }
+    
+    ion-input {
+        border: none;
+        outline: none;
+        padding: 10px;
+        --color: #444242;
+    }
 
-.form__div {
-    width: 100%;
-    border: solid 1px rgb(145, 145, 145);
-    padding: 10px 25px;
-    border-radius: 20px;
-}
+    span {
+        color: rgb(145, 145, 145);
+    }
+    
+    ion-button {
+        width: 100%;
+        padding: 12px 15px;
+        --background: #7ac0e4;
+        border: none;
+        font-size: 16px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    ion-button:hover {
+        --background: #619ebd;
+    }
 
-ion-input {
-    border: none;
-    outline: none;
-    padding: 10px;
-    --color: #444242;
-}
+    .enlace {
+        text-align: center;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .form__group__enlace {
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    hr {
+        width: 100%;
+    }
+    
+    p {
+        text-align: center;
+        font-size: 14px;
+        color: #444242;
+    }
+    
+    .div__group {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .enlace_1 {
+        font-size: 17px;
+        text-decoration: none;
+    }
+    
+    #btn_salir {
+        text-decoration: none;
+    }
+    
+    #btn_salir:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    
+    .enlace_1 a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: #007bff; /* Cambia el color al pasar el cursor */
+    }
 
-span {
-    color: rgb(145, 145, 145);
-}
-
-ion-button {
-    width: 100%;
-    padding: 12px 15px;
-    --background: #7ac0e4;
-    border: none;
-    font-size: 16px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-ion-button:hover {
-    --background: #619ebd;
-}
-
-.enlace {
-    text-align: center;
-    font-size: 16px;
-    color: black;
-    text-decoration: none;
-}
-
-.form__group__enlace {
-    text-align: center;
-    font-size: 25px;
-}
-
-hr {
-    width: 100%;
-}
-
-p {
-    text-align: center;
-    font-size: 14px;
-    color: #444242;
-}
-
-.div__group {
-    display: flex;
-    gap: 20px;
-}
-
-.enlace_1 {
-    font-size: 17px;
-    text-decoration: none;
-}
-
-#btn_salir {
-    text-decoration: none;
-}
-
-#btn_salir:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.enlace_1 a:hover {
-    cursor: pointer;
-    text-decoration: underline;
-    color: #007bff; /* Cambia el color al pasar el cursor */
 }
