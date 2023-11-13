@@ -1,20 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Bienvenido </ion-title>
-    <ion-list>
-      <li><button >Cerrar Sesion</button></li>
-    </ion-list>
+    <ion-buttons slot="start">
+      <ion-img src="../../assets/logo_transparent.png" class="logo"></ion-img>
+    </ion-buttons>
+    <ion-searchbar class="searchbar" placeholder="Buscar"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button class="btn_micro">
+        <ion-img class="icon_micro" src="../../assets/icon_microfono.png"></ion-img>
+      </ion-button>
+      <ion-title class="header-title">
+        <div class="header-content">
+          <ion-img src="../../assets/icon_user_64.png" class="user-icon"></ion-img>
+            <div class="user-name">User</div>
+        </div>
+      </ion-title> 
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="custom-button">
+        <ion-img class="icono_back" src="../../assets/icon_logout_32.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <nav>
-    <ul>
-      <li><button (click)="changeSelected('listado')"  >Equipo Medico Disponible</button></li>
-      <li><button  (click)="changeSelected('formularios')">Lista de espera</button></li>
-      <li><button  (click)="changeSelected('carrito')">carrito </button></li>
-    </ul>
-  </nav>
+<ion-content>
+  <div class="container">
+    <div class="container-buttons">
+      <button (click)="changeSelected('listado')">
+        <ion-img src="../../assets/icon_equipom.png"></ion-img>
+        <span class="text">Equipo médico</span>
+      </button>
+      <button (click)="changeSelected('formularios')">
+        <ion-img src="../../assets/icon_listae.png"></ion-img>
+        <span class="text">Lista de espera</span>
+      </button>
+      <button (click)="changeSelected('carrito')"> 
+        <ion-img src="../../assets/icon_carrito.png"></ion-img>
+        <span class="carrito">Carrito</span>
+      </button>
+    </div>
+  </div>
   <ion-content>
     <ion-item *ngIf="show === 'listado' ">
       <app-listado-donador></app-listado-donador>

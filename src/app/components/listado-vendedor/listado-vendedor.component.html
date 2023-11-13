@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <nav>
         <ion-list *ngIf="copyDatos && datos">
             <ion-item *ngFor="let estado of estados">
@@ -10,7 +10,6 @@
     <div>
         <ion-list>
             <ion-item *ngFor="let dato of copyDatos">
-
                 <a href="/products/{{dato.idEquipoMedico}}">
                     <img src="{{dato.imagenes[0][0]}}" alt="">
                     <p>{{dato.nombre}}</p>
@@ -20,6 +19,4 @@
             </ion-item>
         </ion-list>
     </div>
-
-
 </div>
