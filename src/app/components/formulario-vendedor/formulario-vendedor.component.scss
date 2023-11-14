@@ -1,0 +1,100 @@
+/* ----------------------- Escritorio ----------------------- */
+
+@media (min-width: 991px) {
+    .container {
+        width: 397px;
+        height: 524px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-forms{
+        margin-top: 1px;
+    }
+
+    .archivo{
+        margin-top: 30px;
+    }
+
+    #video{
+        width: 340px;
+        height: 170px;
+    }
+
+    #btn_tf{
+        width: 120px;
+        height: 35px;
+    }
+
+    #btn_enviar{
+        width: 120px;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+
+    .container-photo{
+        width: 345px;
+        height: 220px;
+        border: 2px solid #2c3e50;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+/**Movil**/
+
+@media (max-width: 767px) {
+    .container {
+        max-width: 332px;
+        min-width: 285px;
+        height: 527px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .archivo{
+        margin-top: 30px;
+    }
+
+    #video{
+        width: 340px;
+        height: 170px;
+    }
+
+    #btn_tf{
+        width: 120px;
+        height: 35px;
+    }
+
+    #btn_enviar{
+        width: 120px;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+
+    .container-photo{
+        width: 345px;
+        height: 220px;
+        border: 2px solid #2c3e50;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+}

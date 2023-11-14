@@ -1,20 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>Bienvenido </ion-title>
     <ion-list>
-      <li><button (click)="logOut()" >Cerrar Sesion</button></li>
+      <li><button >Cerrar Sesion</button></li>
     </ion-list>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <nav>
-    <ul>
-      <li><button (click)="changeSelected('listado')"  >Equipo Medico Disponible</button></li>
-      <li><button  (click)="changeSelected('formularios')">Lista de espera</button></li>
-      <li><button  (click)="changeSelected('carrito')">carrito </button></li>
-    </ul>
-  </nav>
+<ion-content>
+  <div class="container">
+    <div class="container-buttons">
+      <button (click)="changeSelected('listado')">
+        <ion-img src="../../assets/icon_equipom.png"></ion-img>
+        <span class="text">Equipo médico</span>
+      </button>
+      <button (click)="changeSelected('formularios')">
+        <ion-img src="../../assets/icon_listae.png"></ion-img>
+        <span class="text">Lista de espera</span>
+      </button>
+      <button (click)="changeSelected('carrito')"> 
+        <ion-img src="../../assets/icon_carrito.png"></ion-img>
+        <span class="carrito">Carrito</span>
+      </button>
+    </div>
+  </div>
   <ion-content>
     <ion-item *ngIf="show === 'listado' ">
       <app-listado-donador></app-listado-donador>
