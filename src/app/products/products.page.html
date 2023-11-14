@@ -1,4 +1,7 @@
 <ion-header [translucent]="true">
+  <ion-buttons>
+    <ion-button (click)="returnPage()"><ion-icon></ion-icon>Regresar</ion-button>
+  </ion-buttons>
   <ion-toolbar>
     <ion-title>products</ion-title>
   </ion-toolbar>
@@ -29,6 +32,7 @@
           <ion-select [(ngModel)]="equipoMedico.estado" #estado>
             <ion-select-option value="En venta">En venta</ion-select-option>
             <ion-select-option value="listado">Listado</ion-select-option>
+            <ion-select-option value="En carrito">En carrito</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-buttons>

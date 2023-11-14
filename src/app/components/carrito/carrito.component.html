@@ -1,13 +1,12 @@
 <div>
-  <ion-list>
-      <ion-item *ngFor="let dato of datos">
-
-          <a href="/products/{{dato.idEquipoMedico}}">
-              <img src="{{dato.imagenes[0][0]}}" alt="">
-              <p>{{dato.nombre}}</p>
-              <p>{{dato.descripcion}}</p>
-              <p>{{dato.costo}}</p>
-          </a>
-      </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-item *ngFor="let dato of datos">
+            <p>{{dato.nombre}}</p>
+            <p>{{dato.descripcion}}</p>
+            <p>{{dato.costo}}</p>
+            <ion-buttons>
+                <ion-button (click)="eliminar(dato.idEquipoMedico)"> Eliminar</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ion-list>
 </div>

@@ -54,13 +54,19 @@ export class ProductsPage implements OnInit {
   }
 
   agregarCarrito(producto){
+    console.log(this.user.idUsuario)
+    console.log(localStorage.getItem('carrito'))
+    try {
     producto.estado = "En carrito";
-    if(!localStorage.getItem('carrito')){
+    if(!localStorage.getItem('carrito')) {
       localStorage.setItem('carrito',JSON.stringify({idUsuario: this.user.idUsuario,productos: []}));
     }
+    
+    
     let carrito = JSON.parse(localStorage.getItem('carrito'))
+    console.log(carrito)
     carrito.productos.push(producto)
-    try {
+    
       localStorage.setItem('carrito',JSON.stringify(carrito))
       this.products.updateProduct(producto).subscribe(data => {
         if(data['affectedRows']==1){
@@ -68,10 +74,12 @@ export class ProductsPage implements OnInit {
         }
       })
     } catch (error) {
+      
+    console.log('limpiando')
+    localStorage.clear()
       console.log(error)
     }
-    
-    
+   
   }
 
   verificarUsuario(usuario){
@@ -112,5 +120,10 @@ export class ProductsPage implements OnInit {
       }]
     })
     alerta.present();
+  }
+
+  returnPage(){
+    let pages = ['/vendedor','/donador','/solicitante']
+    this.router.navigate([pages[this.user.idRol-1]])
   }
 }

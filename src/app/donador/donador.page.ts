@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donador',
@@ -9,7 +10,7 @@ export class DonadorPage implements OnInit {
 
   show:string = 'listado';
   showSelected!:string
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,12 @@ export class DonadorPage implements OnInit {
     if(select !== this.showSelected){
       this.show = select
     }
+  }
+
+  logOut(){
+    //this.crud.SessionOut();
+    localStorage.removeItem('Usuario')
+    this.router.navigate(['/']);
   }
  
 }
