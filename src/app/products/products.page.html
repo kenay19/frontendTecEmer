@@ -15,7 +15,10 @@
           <button (click)="changePrincipalImage(imagen)"><img src="{{imagen}}" alt=""></button>
         </ion-item>
       </ion-list>
-      <img src="{{principal}}" alt="">
+      <div>
+        <img  src="{{principal}}" alt="" id="principal">
+      </div>
+      
     </nav>
     <content>
       <ion-card *ngIf="user && user.idRol==2 && equipoMedico">
@@ -37,10 +40,12 @@
         </ion-item>
         <ion-buttons>
           <ion-button (click)="delete(equipoMedico.idEquipoMedico)">Eliminar</ion-button>
-          <ion-button (click)="actualizar({nombre:nombre.value,descripcion:descripcion.value,costo:costo.value,estado:estado.value})">Actualizar</ion-button>
+          <ion-button
+            (click)="actualizar({nombre:nombre.value,descripcion:descripcion.value,costo:costo.value,estado:estado.value})">Actualizar</ion-button>
 
         </ion-buttons>
       </ion-card>
+      <div *ngIf="user && user.idRol==2 " id="map"></div>
     </content>
   </div>
 </ion-content>

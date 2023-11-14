@@ -11,17 +11,23 @@ export class CarritoComponent implements OnInit {
   constructor(private products: ProductsService) {}
 
   ngOnInit() {
-    this.datos = JSON.parse(localStorage.getItem('carrito')).productos
+    try {
+      this.datos = JSON.parse(localStorage.getItem('carrito')).productos
+      
+    } catch (error) {
+      console.log(error)
+    }
     console.log(this.datos);
   }
 
   eliminar(id) {
     let dato = this.datos.filter((item) => {
-      console.log(item)
       return item.idEquipoMedico == id;
     });
-    dato[0].estado = 'En venta';
-    this.products.updateProduct(dato).subscribe((data) => {
+    dato[0]['estado'] = 'En venta';
+    console.log(dato);
+    this.products.updateProduct(dato[0]).subscribe((data) => {
+      console.log(data)
       if (data['affectedRows'] == 1) {
         this.datos = this.datos.filter((item) => {
           return item.idEquipoMedico !== id;
@@ -31,5 +37,6 @@ export class CarritoComponent implements OnInit {
         localStorage.setItem('carrito', JSON.stringify(newcarrito));
       }
     });
+    console.log(localStorage.getItem('carrito'));
   }
 }

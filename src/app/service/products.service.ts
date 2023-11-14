@@ -35,4 +35,8 @@ export class ProductsService {
   findProduct(producto){
     return this.product.post('http://localhost:3000/medictools/findProduct',[producto])
   }
+
+  getCoordenates(idVendedor){
+    return this.product.post('http://localhost:3000/medictools/getCoordenates',{idVendedor})
+  }
 }
