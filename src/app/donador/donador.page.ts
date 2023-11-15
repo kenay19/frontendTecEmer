@@ -8,11 +8,20 @@ import { Router } from '@angular/router';
 })
 export class DonadorPage implements OnInit {
 
+  rutas: any[]= ['/vendedor','/donador','/solicitante']
   show:string = 'listado';
   showSelected!:string
   constructor(private router:Router) { }
 
   ngOnInit() {
+    const usuario = JSON.parse(localStorage.getItem('Usuario'))
+    console.log(usuario)
+    if(!usuario){
+      this.router.navigate(['/home'])
+    }
+    if(usuario.idRol !=2 ){
+      this.router.navigate(this.rutas[usuario.idRol-1])
+    }
   }
 
   changeSelected(select){

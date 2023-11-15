@@ -24,7 +24,7 @@
       <ion-card *ngIf="user && user.idRol==2 && equipoMedico">
         <ion-buttons>
           <ion-button (click)="agregarCarrito(equipoMedico)">Agregar Carrito</ion-button>
-          <ion-button> Comprar producto </ion-button>
+          <ion-button (click)="comprarProductos([equipoMedico])"> Comprar producto </ion-button>
         </ion-buttons>
       </ion-card>
       <ion-card *ngIf="user && user.idRol==1 && equipoMedico">

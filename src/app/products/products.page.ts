@@ -23,6 +23,7 @@ export class ProductsPage implements OnInit {
   equipoMedico!: any;
   imagenes!: any[];
   principal!: any;
+  total = 0
   constructor(
     private products: ProductsService,
     private route: ActivatedRoute,
@@ -188,4 +189,53 @@ export class ProductsPage implements OnInit {
       title: marker.title,
     });
   }
+
+  comprarProductos(producto){
+    for(let i = 0 ; i < producto.length;i++){
+      console.log('hola')
+      this.total += parseFloat(producto[i].costo);
+    }
+    this.alerta(producto);
+  }
+
+  comprarProducto(equipoMedico){
+
+    const usuario = JSON.parse(
+      localStorage.getItem('Usuario')
+    ).idUsuario;
+    // primero cambiamos el estado del equipo en el frontend
+    equipoMedico.estado = 'Comprado';
+    this.products.compraVenta(equipoMedico.idEquipoMedico, usuario).subscribe((data) => {
+        if (data['insertId']) {
+          this.products.updateProduct(equipoMedico).subscribe((data) => {
+              if (data['affectedRows'] == 1) {
+                this.router.navigate(['/donador'])
+              }
+            })
+        }
+    });
+  
+  }
+  async alerta(productos) {
+    const alerta = await this.alertController.create({
+      header: 'Seguro quiere realizar la compra ',
+      message: 'Total a pagar: ' + this.total,
+      buttons: [
+        {
+          text: 'ok',
+          handler: () => {
+            this.total = 0;
+              for(let i = 0; i < productos.length; i++) {
+                this.comprarProducto(productos[i])
+              }
+                
+            }
+        },
+        ,
+      ],
+    });
+    alerta.present();
+  }
 }
+
+

@@ -6,7 +6,9 @@
             <p>{{dato.costo}}</p>
             <ion-buttons>
                 <ion-button (click)="eliminar(dato.idEquipoMedico)"> Eliminar</ion-button>
+                <ion-button (click)="comprarProductos([dato])">comprar equipo medico</ion-button>
             </ion-buttons>
         </ion-item>
     </ion-list>
+    <ion-button (click)="comprarProductos(datos)">comprar carrito</ion-button>
 </div>

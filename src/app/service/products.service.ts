@@ -39,4 +39,8 @@ export class ProductsService {
   getCoordenates(idVendedor){
     return this.product.post('http://localhost:3000/medictools/getCoordenates',{idVendedor})
   }
+
+  compraVenta(idEquipoMedico,idUsuario){
+    return this.product.post('http://localhost:3000/medictools/compraVenta',{idEquipoMedico,idUsuario});
+  }
 }
