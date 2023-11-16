@@ -1,51 +1,77 @@
-<ion-header [translucent]="true">
-  <ion-buttons>
-    <ion-button (click)="returnPage()"><ion-icon></ion-icon>Regresar</ion-button>
-  </ion-buttons>
+<ion-header>
   <ion-toolbar>
-    <ion-title>products</ion-title>
+    <ion-buttons slot="start" class="ion-logo">
+      <ion-img src="../../assets/logo_transparent.png" class="logo"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div>
-    <nav id="options">
-      <ion-list>
-        <ion-item *ngFor="let imagen of imagenes">
-          <button (click)="changePrincipalImage(imagen)"><img src="{{imagen}}" alt=""></button>
-        </ion-item>
-      </ion-list>
-      <div>
-        <img  src="{{principal}}" alt="" id="principal">
-      </div>
-      
-    </nav>
-    <content>
-      <ion-card *ngIf="user && user.idRol==2 && equipoMedico">
-        <ion-buttons>
-          <ion-button (click)="agregarCarrito(equipoMedico)">Agregar Carrito</ion-button>
-          <ion-button> Comprar producto </ion-button>
-        </ion-buttons>
-      </ion-card>
-      <ion-card *ngIf="user && user.idRol==1 && equipoMedico">
-        <p>Nombre</p><ion-input type="text" value="{{equipoMedico.nombre}}" #nombre></ion-input>
-        <p>Descripcion</p><ion-input type="textarea" value="{{equipoMedico.descripcion}}" #descripcion></ion-input>
-        <p>costo</p><ion-input type="numbrer" value="{{equipoMedico.costo}}" #costo></ion-input>
-        <ion-item>
-          <ion-select [(ngModel)]="equipoMedico.estado" #estado>
-            <ion-select-option value="En venta">En venta</ion-select-option>
-            <ion-select-option value="listado">Listado</ion-select-option>
-            <ion-select-option value="En carrito">En carrito</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <ion-buttons>
-          <ion-button (click)="delete(equipoMedico.idEquipoMedico)">Eliminar</ion-button>
-          <ion-button
-            (click)="actualizar({nombre:nombre.value,descripcion:descripcion.value,costo:costo.value,estado:estado.value})">Actualizar</ion-button>
-
-        </ion-buttons>
-      </ion-card>
-      <div *ngIf="user && user.idRol==2 " id="map"></div>
-    </content>
+<ion-content>
+  <div class="container-btn_back">
+    <ion-buttons class="container_buttons">
+      <ion-button class="custom-button" (click)="returnPage()">
+        <ion-img class="icon_back" src="../../assets/icon_back.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
   </div>
+
+  <div class="container-complete">
+
+    <div class="container-agrupacion">
+      <div class="container_img">
+        <div class="container_left-v">
+          <ion-list lines="none">
+            <ion-item *ngFor="let imagen of imagenes">
+              <img (click)="changePrincipalImage(imagen)" src="{{imagen}}" alt="">
+            </ion-item>
+          </ion-list>
+        </div>
+        <div class="container_center">
+          <img  src="{{principal}}" alt="" id="principal">
+        </div>
+      </div>
+
+      <div>
+        <ion-card *ngIf="user && user.idRol==2 && equipoMedico">
+          <ion-buttons>
+            <ion-button (click)="agregarCarrito(equipoMedico)">Agregar Carrito</ion-button>
+            <ion-button> Comprar producto </ion-button>
+          </ion-buttons>
+        </ion-card>
+      </div>
+
+      <div class="container-forms">
+        <form *ngIf="user && user.idRol==1 && equipoMedico">
+
+          <ion-item class="campo">
+            <ion-input label="Nombre" labelPlacement="stacked" type="text" value="{{equipoMedico.nombre}}" #nombre></ion-input>
+          </ion-item>
+
+          <ion-item class="campo">
+            <ion-textarea label="Descripción" labelPlacement="floating" rows="3" value="{{equipoMedico.descripcion}}" #descripcion></ion-textarea>
+          </ion-item>
+
+          <ion-item class="campo">
+            <ion-input label="Costo" labelPlacement="stacked" type="number" value="{{equipoMedico.costo}}" #costo></ion-input>
+          </ion-item>
+
+          <ion-item class="campo desp">
+            <ion-select label="Estado" label-placement="floating" [(ngModel)]="equipoMedico.estado" #estado>
+              <ion-select-option value="En venta">En venta</ion-select-option>
+              <ion-select-option value="listado">Listado</ion-select-option>
+              <ion-select-option value="En carrito">En carrito</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-buttons>
+            <ion-button (click)="delete(equipoMedico.idEquipoMedico)">Eliminar</ion-button>
+            <ion-button
+              (click)="actualizar({nombre:nombre.value,descripcion:descripcion.value,costo:costo.value,estado:estado.value})">Actualizar</ion-button>
+          </ion-buttons>
+        </form>
+      </div>
+
+    </div>
+  </div> <!--container-complete-->
+  <div *ngIf="user && user.idRol==2 " id="map"></div>
 </ion-content>

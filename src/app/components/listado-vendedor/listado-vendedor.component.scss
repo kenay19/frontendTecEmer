@@ -1,4 +1,99 @@
-.container{
-    width: 100%;
-    height: 100%;
+ion-card {
+    width: 320px; 
+    height: 350px;
+    margin: 10px;
+    border: 5px solid #90E0EF;
+    transition: transform 0.3s ease;
 }
+
+ion-card:hover {
+    transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
+}
+
+ion-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
+}
+
+ion-item {
+    width: auto; /* Ajusta el ancho del elemento según el contenido */
+}
+
+.container-btn {
+    height: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.btn_seleccion {
+    flex: 1; /* Hace que los botones ocupen el espacio disponible de manera igual */
+    padding: 10px;
+    background-color: #4361EE;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-buttons {
+    display: flex;
+    width: 1504px;
+}
+
+.btn_seleccion:hover {
+    background-color: #3345CB; /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+/* Estilos para la información dentro de ion-card-content */
+.product-name,
+.product-description,
+.product-cost {
+    margin: 5px 0;
+}
+
+ion-card-content p {
+    text-decoration: none;
+}
+
+.product-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111d13;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; 
+}
+
+.product-description {
+    width: 295px;
+    height: 70px;
+    max-height: 90px;
+    margin-top: 5px;
+    font-size: 14px;
+    overflow: hidden;
+    color: #111d13;
+}
+
+.product-cost {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111d13;
+}
+
+.estilos-a{
+    text-decoration: none;
+}
+

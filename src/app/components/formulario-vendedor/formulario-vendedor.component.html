@@ -2,16 +2,15 @@
   <div class="container-forms">
     <form>
       <ion-item>
-        <ion-input label="Nombre" type="text" #nombre></ion-input>
+        <ion-input label="Nombre" labelPlacement="floating" type="text" #nombre></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input label="Descripción" type="textarea" #descripcion></ion-input>
+        <ion-textarea label="Descripción" labelPlacement="floating" type="textarea"  #descripcion></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-input label="Costo" type="number" #costo></ion-input>
+        <ion-input label="Costo" labelPlacement="floating" type="number" #costo></ion-input>
       </ion-item>
     </form>
-    <ion-input class="archivo" type="file" #archivoInput (change)="cargarImagen()"></ion-input>
   </div>
   <div class="container-photo">
     <video id="video" controls [hidden]="tomarFoto"></video>
