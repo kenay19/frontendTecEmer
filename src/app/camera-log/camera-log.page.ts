@@ -87,7 +87,7 @@ export class CameraLogPage implements OnInit {
               this.auth
                 .logueoFacial('login')
                 .subscribe((data) => {
-                  if(data[0].hasOwnProperty('idUsuario') ){
+                  if(data[0]['idUsuario'] ){
                     localStorage.setItem("Usuario",JSON.stringify(data[0]))
 
                     this.auth.setUser(data[0])

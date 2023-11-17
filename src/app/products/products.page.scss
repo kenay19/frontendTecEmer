@@ -2,6 +2,19 @@ ion-content{
   --background:  #E8E8E8;
 }
 
+ion-content {
+  #map {
+    width: 160px;
+    height: 160px;
+    opacity: 0;
+    transition: opacity 150ms ease-in;
+    display: block;
+    &.show-map{
+      opacity: 1;
+    }
+  }
+}
+
 ion-header {
   height: 90px;
 }

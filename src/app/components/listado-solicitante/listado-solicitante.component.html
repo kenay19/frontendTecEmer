@@ -1,0 +1,18 @@
+<div>
+  <ion-input type="search" #buscador></ion-input>
+  <ion-buttons>
+    <ion-button (click)="buscar(buscador.value)">buscar</ion-button>
+    <ion-button (click)="changeView(buscador.value)">{{mensaje}} </ion-button>
+    <ion-button (click)="cancelar(buscador)">cancelar</ion-button>
+  </ion-buttons>
+  <ion-list *ngIf="!showMap">
+    <ion-item *ngFor="let dato of copyDatos">
+      <img src="{{dato.imagenes[0][0]}}" alt="">
+      <p>{{dato.nombre}}</p>
+      <p>{{dato.descripcion}}</p>
+      <p>{{dato.costo}}</p>
+      <button (click)="solicitar([dato.idEquipoMedico,dato.idVendedor])">solicitar</button>
+    </ion-item>
+  </ion-list>
+  <div id="map"  *ngIf="showMap"></div>
+</div>

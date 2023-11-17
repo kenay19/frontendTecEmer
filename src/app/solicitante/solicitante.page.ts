@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitante',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolicitantePage implements OnInit {
 
-  constructor() { }
+  page =  'solicitud'
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
+  changeView(page){
+    if(page !== this.page){
+      this.page = page;
+    }
+  }
+
+  out(){
+    localStorage.removeItem('Usuario');
+    this.router.navigate(['/home'])
+  }
 }

@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
+  <ion-button (click)="out()">salir</ion-button>
   <ion-toolbar>
     <ion-title>solicitante</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">solicitante</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <nav>
+    <ul>
+      <li><button (click)="changeView('solicitud')">solicitud equipo medico</button> </li>
+      <li><button (click)="changeView('listado')">equipo medico donado</button></li>
+    </ul>
+  </nav>
+  <div>
+    <app-formulario-solicitud *ngIf="page === 'solicitud'"></app-formulario-solicitud>
+    <app-listado-solicitante *ngIf="page === 'listado'"></app-listado-solicitante>
+  </div>
 </ion-content>
