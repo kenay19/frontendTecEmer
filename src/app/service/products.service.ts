@@ -7,6 +7,10 @@ export class ProductsService {
 
   constructor(private product : HttpClient) { }
 
+  getProductsids(idVendedor){
+    return this.product.post('http://localhost:3000/medictools/getProductsIds',{idVendedor})
+  }
+
   getProducts(idVendedor){
     return this.product.post('http://localhost:3000/medictools/getProducts',{idVendedor})
   }
@@ -42,5 +46,17 @@ export class ProductsService {
 
   compraVenta(idEquipoMedico,idUsuario){
     return this.product.post('http://localhost:3000/medictools/compraVenta',{idEquipoMedico,idUsuario});
+  }
+
+  getProductsSolicitante(){
+    return this.product.get('http://localhost:3000/medictools/getProductsSolicitante')
+  }
+
+  donacionAsignada(idEquipoMedico,idSolicitante){
+    return this.product.post('http://localhost:3000/medictools/DonacionAsignada',{idEquipoMedico,idSolicitante})
+  }
+
+  getDonacionesAsignadas(idSolicitante){
+    return this.product.post('http://localhost:3000/medictools/getDonacionesAsignadas',{idSolicitante})
   }
 }
