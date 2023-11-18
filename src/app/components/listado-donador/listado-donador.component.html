@@ -1,33 +1,33 @@
 <div>
-  <nav>
-      <ion-list *ngIf="copyDatos && datos">
-          <ion-item *ngFor="let estado of estados">
-              <button (click)="filtrado(estado.name)">{{estado.name}}</button>
-          </ion-item>
-      </ion-list>
-      <div>
-        <ion-input type="text" #buscado></ion-input>
-        <ion-button (click)="buscador(buscado.value)"><ion-icon></ion-icon></ion-button>
-        <ion-button (click)="audioSearch()"> Audio </ion-button>
-      </div>
-  </nav>
-
-  <div>
-      <ion-list>
-          <ion-item *ngFor="let dato of copyDatos">
-    
-              <a href="/products/{{dato.idEquipoMedico}}">
-                  <img src="{{dato.imagenes[0][0]}}" alt="">
-                  <p>{{dato.nombre}}</p>
-                  <p>{{dato.descripcion}}</p>
-                  <p>{{dato.costo}}</p>
-              </a>
-
-
-
-          </ion-item>
-      </ion-list>
-  </div>
-
+    <nav>
+        <ion-list *ngIf="copyDatos && datos">
+            <ion-item *ngFor="let estado of estados">
+                <button (click)="filtrado(estado.name)">{{estado.name}}</button>
+            </ion-item>
+        </ion-list>
+        <div class="container_buscador">
+            <ion-searchbar class="buscador" #buscado></ion-searchbar>
+            <ion-button class="btn_buscador" (click)="buscador(buscado.value)">
+                <ion-img class="icono_buscador" src="../../assets/icon_search.png"></ion-img>
+            </ion-button>
+        </div>
+    </nav>
+    <div>
+        <ion-list class="product-list" lines="none">
+            <ion-item *ngFor="let dato of copyDatos">
+                <ion-card>
+                <a href="/products/{{dato.idEquipoMedico}}" class="estilos-a">
+                    <ion-card-content>
+                        <img src="{{dato.imagenes[0][0]}}" alt="">
+                        <ion-title class="product-name">{{dato.nombre}}</ion-title>
+                        <span class="product-description">{{dato.descripcion}}</span>
+                        <ion-label class="product-cost">${{dato.costo}}</ion-label>
+                    </ion-card-content>
+                </a>
+                </ion-card>
+            </ion-item>
+        </ion-list>
+    </div>
 
 </div>
+ 
