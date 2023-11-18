@@ -1,10 +1,5 @@
 <div>
     <nav>
-        <ion-list *ngIf="copyDatos && datos">
-            <ion-item *ngFor="let estado of estados">
-                <button (click)="filtrado(estado.name)">{{estado.name}}</button>
-            </ion-item>
-        </ion-list>
         <div class="container_buscador">
             <ion-searchbar class="buscador" #buscado></ion-searchbar>
             <ion-button class="btn_buscador" (click)="buscador(buscado.value)">
