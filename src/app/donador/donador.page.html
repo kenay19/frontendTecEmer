@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Bienvenido </ion-title>
-    <ion-list>
-      <li><button >Cerrar Sesion</button></li>
-    </ion-list>
+    <ion-buttons slot="start" class="ion-logo">
+      <ion-img src="../../assets/logo_transparent.png" class="logo"></ion-img>
+    </ion-buttons>
+    <ion-buttons slot="end">   
+      <div class="header-content">
+        <ion-img src="../../assets/icon_user_64.png" class="user-icon"></ion-img>
+        <div class="user-name">Usuario</div>
+      </div>
+    </ion-buttons>
+    <ion-buttons slot="end" class="ion-back">
+      <ion-button class="custom-button" (click)="logOut()">
+        <ion-img class="icono_back" src="../../assets/icon_logout_32.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 

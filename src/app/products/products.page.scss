@@ -23,6 +23,36 @@ ion-toolbar{
 
 // Body
 
+.container_compras {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ion-c-b{
+  background: #E8E8E8;
+  border-radius: 0; /* Elimina el contorno redondeado */
+  box-shadow: none; 
+}
+
+.cbotones {
+  padding: 0; /* Elimina el relleno interno del ion-buttons */
+}
+
+.btn_acarrito,
+.btn_comprar {
+  width: 180px; /* Ajusta el ancho según tus necesidades */
+  margin: 5px 10px 5px 0; /* Espacio entre los botones */
+}
+
+
 .container-btn_back{ // Contenedor del boton general
   width: 100%;
   height: 50px;
