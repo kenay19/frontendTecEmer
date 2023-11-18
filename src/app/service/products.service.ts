@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpRequest } from '@angular/common/http';
+import { HttpClient,HttpRequest,HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -58,5 +58,16 @@ export class ProductsService {
 
   getDonacionesAsignadas(idSolicitante){
     return this.product.post('http://localhost:3000/medictools/getDonacionesAsignadas',{idSolicitante})
+  }
+
+  getTranscription(audioBlob){
+    const header = new HttpHeaders();
+    header.append('Content-Type','multipar/form-data')
+    const formData = new FormData();
+    formData.append('audioBlob', audioBlob, 'audio.flac');
+    const options = {
+      headers: header,
+    }
+    return this.product.post('http://localhost:3000/medictools/transcribe',formData,options);
   }
 }

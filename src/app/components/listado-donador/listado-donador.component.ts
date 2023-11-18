@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/service/products.service';
-
+import { MicrofonoService } from 'src/app/service/microfono.service';
 @Component({
   selector: 'app-listado-donador',
   templateUrl: './listado-donador.component.html',
@@ -12,7 +12,8 @@ export class ListadoDonadorComponent  implements OnInit {
   copyDatos : any = [];
   estados: any[] = [{ name: 'En venta' }];
   filtroSelected !: string 
-  constructor(private products:ProductsService) { }
+  shearch:boolean = true;
+  constructor(private products:ProductsService , private microfono:MicrofonoService) { }
 
   ngOnInit() {
     this.cargarProductos()
@@ -63,5 +64,17 @@ export class ListadoDonadorComponent  implements OnInit {
       this.copyDatos=datos
     })
     
+  }
+
+  audioSearch(){
+    if(this.shearch){
+      this.microfono.startRecord()
+      this.shearch = false
+      return
+    }
+    this.microfono.stopRecord()
+    this.shearch = true
+   
+
   }
 }
