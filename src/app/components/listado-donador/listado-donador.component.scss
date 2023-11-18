@@ -1,31 +1,34 @@
 ion-searchbar{
-    width: 1350px;
+    width: 1400px;
     color: #111d13;
 }
 /* Estilo para el contenedor principal */
 .container_buscador {
-    width: 100%;
     display: flex;
     align-items: center;
 }
-  
+
 /* Estilo para el ion-searchbar */
 .buscador {
     flex: 1; /* Toma el espacio restante disponible */
-    margin-right: 10px;
+    margin-right: 2px;
 }
-  
+
 /* Estilo para el ion-button */
-.btn_buscador {
-    width: 60px; /* Ancho del botón */
+.btn_buscador,
+.btn_micro {
+    width: 47px; /* Ancho del botón */
     height: 40px; /* Altura del botón */
-    --background: transparent; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: none; /* Elimina el borde */
-    box-shadow: none; /* Elimina la sombra */
-    padding: 0;
-    outline: none;
 }
+
+/* Estilo para el contenido dentro del ion-button */
+.icono_buscador,
+.icono_micro {
+    width: 60px; /* Ancho del botón */
+    height: 40px; /* Ajusta la altura del icono al 100% del botón */
+    object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
+}
+
   
 ion-card {
     width: 320px; 
@@ -50,46 +53,6 @@ ion-card-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
-}
-
-ion-item {
-    width: auto; /* Ajusta el ancho del elemento según el contenido */
-}
-
-.container-btn {
-    height: 30px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #f0f0f0;
-}
-
-.btn_seleccion {
-    flex: 1; /* Hace que los botones ocupen el espacio disponible de manera igual */
-    padding: 10px;
-    background-color: #4361EE;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-ion-button.btn_buscador {
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    outline: none;
-}
-
-.filter-buttons {
-    display: flex;
-    width: 1504px;
-}
-
-.btn_seleccion:hover {
-    background-color: #3345CB; /* Cambia el color al pasar el ratón sobre el botón */
 }
 
 /* Estilos para la información dentro de ion-card-content */
