@@ -68,11 +68,16 @@ export class ListadoDonadorComponent  implements OnInit {
 
   audioSearch(){
     if(this.shearch){
-      this.microfono.startRecord()
+      this.microfono.startRecord().then((result => {
+        this.microfono.chunks = []
+      this.microfono.datos = ''
+      this.buscador(result['transcription'])
+      }))
       this.shearch = false
       return
     }
     this.microfono.stopRecord()
+    
     this.shearch = true
    
 

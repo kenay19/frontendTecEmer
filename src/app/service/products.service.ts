@@ -64,7 +64,7 @@ export class ProductsService {
     const header = new HttpHeaders();
     header.append('Content-Type','multipar/form-data')
     const formData = new FormData();
-    formData.append('audioBlob', audioBlob, 'audio.flac');
+    formData.append('audioBlob', audioBlob, 'audio.wav');
     const options = {
       headers: header,
     }

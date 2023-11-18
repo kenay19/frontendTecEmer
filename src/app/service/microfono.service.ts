@@ -6,43 +6,49 @@ import { ProductsService } from './products.service';
 })
 export class MicrofonoService {
 
-  stream !: any;
-  mediaRecorder !: any;
-  chunks !: any [];
+  stream: any;
+  mediaRecorder: any;
+  chunks: any[] = [];
+  datos: any = ' ';
 
   constructor(private products: ProductsService) {}
 
-  async startRecord(){
-    this.stream = await navigator.mediaDevices.getUserMedia({audio:true});
+  async startRecord() {
+    this.datos = ''
+    this.stream = await navigator.mediaDevices.getUserMedia({ audio: { sampleRate: 48000 } });
+    const audioTracks = this.stream.getAudioTracks();
+    
     this.mediaRecorder = new MediaRecorder(this.stream);
-    this.chunks = [];
 
-    this.mediaRecorder.ondataavailable = (e) =>{
-      this.chunks.push(e.data);
-    }
+    return new Promise((resolve, reject) => {
+      this.mediaRecorder.ondataavailable = (e) => {
+        this.chunks.push(e.data);
+      };
 
-    this.mediaRecorder.onstop = () => {
-      const blob = new Blob(this.chunks,{type: 'audio/flac'})
-      console.log(blob)
-      this.products.getTranscription(blob).subscribe(data =>{
-        console.log(data)
-      })
-    }
+      this.mediaRecorder.onstop = async () => {
+        const blob = new Blob(this.chunks, { type: 'audio/wav' });
+        try {
+          this.datos = await this.products.getTranscription(blob).toPromise();
+          resolve(this.datos);
+        } catch (error) {
+          reject(error);
+        }
+      };
 
-    this.mediaRecorder.addEventListener('stop', () => {
-      if (this.mediaRecorder.state === 'inactive') {
-        this.stopRecord();
-      }
+      
+
+      this.mediaRecorder.start();
     });
-
-    this.mediaRecorder.start()
-  }
-  stopRecord() {
-    if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
-      this.mediaRecorder.stop();
-      this.stream.getTracks().forEach((track) => track.stop());
-    }
   }
 
-  
+  async stopRecord(): Promise<any> {
+    return new Promise(async (resolve) => {
+      if (this.mediaRecorder && this.mediaRecorder.state !== 'inactive') {
+        await this.mediaRecorder.stop();
+        this.stream.getTracks().forEach((track) => track.stop());
+      }
+      resolve(this.datos);
+      
+    });
+  }
 }

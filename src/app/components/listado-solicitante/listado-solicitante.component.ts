@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { MicrofonoService } from 'src/app/service/microfono.service';
 import { ProductsService } from 'src/app/service/products.service';
 declare var google;
 interface Marker {
@@ -21,10 +22,13 @@ export class ListadoSolicitanteComponent implements OnInit {
   busqueda!: string;
   map = null;
   mensaje : string = 'mostrar mapa'
+  
+  shearch:boolean = true;
   constructor(
     private products: ProductsService,
     private elementRef: ElementRef,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private microfono:MicrofonoService
   ) {}
 
   async ngOnInit() {
@@ -258,5 +262,22 @@ export class ListadoSolicitanteComponent implements OnInit {
         }]
     })
     alert.present()
+  }
+
+  audioSearch(){
+    if(this.shearch){
+      this.microfono.startRecord().then((result => {
+        this.microfono.chunks = []
+      this.microfono.datos = ''
+      this.buscar(result['transcription'])
+      }))
+      this.shearch = false
+      return
+    }
+    this.microfono.stopRecord()
+    
+    this.shearch = true
+   
+
   }
 }

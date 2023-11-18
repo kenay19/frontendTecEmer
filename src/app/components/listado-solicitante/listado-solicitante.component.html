@@ -2,6 +2,7 @@
   <ion-input type="search" #buscador></ion-input>
   <ion-buttons>
     <ion-button (click)="buscar(buscador.value)">buscar</ion-button>
+    <ion-button (click)="audioSearch()">audio</ion-button>
     <ion-button (click)="changeView(buscador.value)">{{mensaje}} </ion-button>
     <ion-button (click)="cancelar(buscador)">cancelar</ion-button>
   </ion-buttons>
