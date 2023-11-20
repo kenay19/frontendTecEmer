@@ -1,19 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-button (click)="out()">salir</ion-button>
+<ion-header>
   <ion-toolbar>
-    <ion-title>solicitante</ion-title>
+    <ion-buttons slot="start" class="ion-logo">
+      <ion-img src="../../assets/logo_transparent.png" class="logo"></ion-img>
+    </ion-buttons>
+    <ion-buttons slot="end">   
+      <div class="header-content">
+        <ion-img src="../../assets/icon_user_64.png" class="user-icon"></ion-img>
+        <div class="user-name">Usuario</div>
+      </div>
+    </ion-buttons>
+    <ion-buttons slot="end" class="ion-back">
+      <ion-button class="custom-button" (click)="out()">
+        <ion-img class="icono_back" src="../../assets/icon_logout_32.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <nav>
-    <ul>
-      <li><button (click)="changeView('solicitud')">solicitud equipo medico</button> </li>
-      <li><button (click)="changeView('listado')">equipo medico donado</button></li>
-    </ul>
-  </nav>
-  <div>
-    <app-formulario-solicitud *ngIf="page === 'solicitud'"></app-formulario-solicitud>
-    <app-listado-solicitante *ngIf="page === 'listado'"></app-listado-solicitante>
+<ion-content>
+  <div class="container">
+    <div class="container-buttons">
+
+      <button (click)="changeView('solicitud')">
+        <ion-img src="../../assets/icon_equipom.png"></ion-img>
+        <span class="text"> Solicitud de equipo médico</span>
+      </button>
+      <button (click)="changeView('listado')"> 
+        <ion-img src="../../assets/icon_carrito.png"></ion-img>
+        <span class="carrito">Equipo médico donado</span>
+      </button>
+
+    </div>
   </div>
+
+  <ion-content>
+    <ion-item>
+      <app-formulario-solicitud *ngIf="page === 'solicitud'"></app-formulario-solicitud>
+    </ion-item>
+  </ion-content>
+  <ion-content>
+    <ion-item>
+      <app-listado-solicitante *ngIf="page === 'listado'"></app-listado-solicitante>
+    </ion-item>
+  </ion-content>
 </ion-content>
