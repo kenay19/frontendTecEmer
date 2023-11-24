@@ -37,10 +37,17 @@ ion-toolbar{
 // Body
 
 .container_compras {
-  height: 300px;
+  height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+.mapa {
+  width: 300px; 
+  height: 200px; 
+  margin-top: 10px; 
 }
 
 .button-container {
@@ -53,6 +60,7 @@ ion-toolbar{
   background: #E8E8E8;
   border-radius: 0; /* Elimina el contorno redondeado */
   box-shadow: none; 
+  
 }
 
 .cbotones {

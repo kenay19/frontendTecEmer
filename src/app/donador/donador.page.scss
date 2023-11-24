@@ -100,4 +100,22 @@ button {
 .carrito{
     margin-left: 2px;
     font-size: 17px;
+    
+}
+
+.container-carrito {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+}
+
+.container-carrito ion-item {
+    border: 3px solid rgb(57, 46, 119); 
+    border-radius: 10px;
+}
+
+.container-listado {
+    position: absolute;
 }

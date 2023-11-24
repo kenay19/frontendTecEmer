@@ -1,14 +1,17 @@
-<div>
-    <ion-list>
-        <ion-item *ngFor="let dato of datos">
-            <p>{{dato.nombre}}</p>
-            <p>{{dato.descripcion}}</p>
-            <p>{{dato.costo}}</p>
-            <ion-buttons>
-                <ion-button (click)="eliminar(dato.idEquipoMedico)"> Eliminar</ion-button>
-                <ion-button (click)="comprarProductos([dato])">comprar equipo medico</ion-button>
+<div class="container-general">
+    <div class="container-titulo">
+        <ion-title class="titulo"> Materiales médicos </ion-title>
+    </div>
+    <div class="container-carrito">
+        <ion-item *ngFor="let dato of datos" lines="none" class="carrito-item">
+            <ion-label class="nombre">{{dato.nombre}}</ion-label>
+            <ion-label class="descripcion">{{dato.descripcion}}</ion-label>
+            <ion-label class="costo">${{dato.costo}}</ion-label>
+            <ion-buttons class="botones-carrito">
+                <ion-button (click)="comprarProductos([dato])" class="comprar">Comprar</ion-button>
+                <ion-button (click)="eliminar(dato.idEquipoMedico)" class="eliminar">Eliminar</ion-button>
             </ion-buttons>
         </ion-item>
-    </ion-list>
-    <ion-button (click)="comprarProductos(datos)">comprar carrito</ion-button>
+    </div>
+    <ion-button (click)="comprarProductos(datos)" class="comprar-carrito">Comprar carrito</ion-button>
 </div>

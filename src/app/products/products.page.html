@@ -38,6 +38,7 @@
             <ion-button class="btn_comprar" (click)="comprarProducto(equipoMedico)"> Comprar producto </ion-button>
           </ion-buttons>
         </ion-card>
+        <div class="mapa" *ngIf="user && user.idRol==2 " id="map"></div>
       </div>
 
       <div class="container-forms">
@@ -73,5 +74,4 @@
 
     </div>
   </div> <!--container-complete-->
-  <div *ngIf="user && user.idRol==2 " id="map"></div>
 </ion-content>

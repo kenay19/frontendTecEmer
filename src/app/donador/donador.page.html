@@ -17,7 +17,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="container-general">
   <div class="container">
     <div class="container-buttons">
       <button (click)="changeSelected('listado')">
@@ -30,19 +30,19 @@
       </button>
     </div>
   </div>
-  <ion-content>
-    <ion-item *ngIf="show === 'listado' ">
+  <div class="container-listado">
+    <ion-item *ngIf="show === 'listado' " lines="none">
       <app-listado-donador></app-listado-donador>
     </ion-item>
-  </ion-content>
-  <ion-content>
-    <ion-item *ngIf="show === 'formularios' ">
+  </div>
+  <div>
+    <ion-item *ngIf="show === 'formularios' " lines="none">
       <app-formulario-donador></app-formulario-donador>
     </ion-item>
-  </ion-content>
-  <ion-content>
-    <ion-item *ngIf="show === 'carrito' ">
+  </div>
+  <div class="container-carrito">
+    <ion-item *ngIf="show === 'carrito' " lines="none">
       <app-carrito></app-carrito>
     </ion-item>
-  </ion-content>
+  </div>
 </ion-content>

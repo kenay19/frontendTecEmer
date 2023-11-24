@@ -1,0 +1,82 @@
+.container-general {
+    width: 100%;
+    height: 250px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+  
+.container-titulo {
+    width: 900px;
+    height: 35px;
+    border-radius: 7px;
+}
+
+ion-title{
+    height: 100%;
+}
+
+.titulo {
+    font-size: 24px;
+}
+  
+.container-carrito {
+    width: 100%;
+}
+  
+.carrito-item {
+    border: 1px solid #2c2a2a;
+    justify-content: space-between;
+}
+  
+.costo {
+    font-weight: bold;
+    text-align: center; 
+}
+  
+.botones-carrito {
+    display: flex;
+    align-items: center;
+}
+  
+.comprar,
+.eliminar {
+    margin-left: 5px;
+    background-color: #4caf50; /* Color de fondo verde */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    padding: 3px 6px; /* Espaciado interno más pequeño */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Agregamos transición para un cambio suave de color de fondo */
+
+    &:hover {
+        background-color: #45a049; /* Cambiamos el color de fondo al pasar el mouse */
+    }
+}
+
+.eliminar {
+    background-color: #f44336; /* Color de fondo rojo para el botón Eliminar */
+    &:hover {
+        background-color: #d32f2f; /* Cambiamos el color de fondo al pasar el mouse */
+    }
+}
+
+.comprar-carrito {   
+    height: 30px;
+    position: absolute;
+    bottom: 10px; /* Ajusta según sea necesario */
+    right: 10px;
+    background-color: #2196f3; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Agregamos transición para un cambio suave de color de fondo */
+
+    &:hover {
+        background-color: #0b7dda; /* Cambiamos el color de fondo al pasar el mouse */
+    }
+}
