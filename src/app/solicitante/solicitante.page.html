@@ -33,14 +33,14 @@
     </div>
   </div>
 
-  <ion-content>
-    <ion-item>
+  <div class="container-solicitud">
+    <ion-item lines="none">
       <app-formulario-solicitud *ngIf="page === 'solicitud'"></app-formulario-solicitud>
     </ion-item>
-  </ion-content>
-  <ion-content>
-    <ion-item>
+  </div>
+  <div class="container-listado">
+    <ion-item lines="none">
       <app-listado-solicitante *ngIf="page === 'listado'"></app-listado-solicitante>
     </ion-item>
-  </ion-content>
+  </div>
 </ion-content>

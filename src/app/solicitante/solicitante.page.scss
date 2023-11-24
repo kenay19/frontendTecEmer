@@ -105,3 +105,23 @@ button {
     width: 25px;
     height: 25px;
 }
+
+// Ion-card
+.container-solicitud {
+    height: 100%;
+    width: 100%;
+    position: absolute;  
+    margin-top: 5px;
+}
+
+.container-listado {
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Centra horizontalmente utilizando margen automático */
+    box-sizing: border-box;   
+    padding: 0;
+    margin-top: 5px;
+}

@@ -1,12 +1,33 @@
-<div>
-  <ion-input type="search" #buscador></ion-input>
-  <ion-buttons>
-    <ion-button (click)="buscar(buscador.value)">buscar</ion-button>
-    <ion-button (click)="audioSearch()">audio</ion-button>
-    <ion-button (click)="changeView(buscador.value)">{{mensaje}} </ion-button>
-    <ion-button (click)="cancelar(buscador)">cancelar</ion-button>
-  </ion-buttons>
-  <ion-list *ngIf="!showMap">
+<div class="container-general">  
+
+  <div class="container_buscador">
+    <ion-searchbar class="buscador" show-clear-button="always" #buscador></ion-searchbar>
+    <ion-buttons>
+        <ion-button class="btn_buscador" (click)="buscar(buscador.value)">
+            <ion-img class="icono_buscador" src="../../assets/icon_search.png"></ion-img>
+        </ion-button>
+    </ion-buttons> 
+
+    <ion-buttons>
+        <ion-button class="btn_micro" (click)="audioSearch()">
+            <ion-img class="icono_micro" src="../../assets/icon_microfono.png"></ion-img>
+        </ion-button>
+    </ion-buttons> 
+
+    <ion-buttons>
+      <ion-button class="btn_mapa" (click)="changeView(buscador.value)">
+          <ion-img class="icono_mapa" src="../../assets/icon_mapa.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
+
+    <ion-buttons>
+      <ion-button class="btn_cancelar" (click)="cancelar(buscador)">
+          <ion-img class="icono_cancelar" src="../../assets/icon_cancelar.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
+  </div>
+
+  <ion-list *ngIf="!showMap" lines="none">
     <ion-item *ngFor="let dato of copyDatos">
       <img src="{{dato.imagenes[0][0]}}" alt="">
       <p>{{dato.nombre}}</p>
@@ -15,5 +36,5 @@
       <button (click)="solicitar([dato.idEquipoMedico,dato.idVendedor])">solicitar</button>
     </ion-item>
   </ion-list>
-  <div id="map"  *ngIf="showMap"></div>
+  <div id="map" *ngIf="showMap"></div>
 </div>

@@ -1,11 +1,13 @@
-<ion-list class="product-list" *ngIf="copyDatos && datos" lines="none">
-  <ion-item *ngFor="let dato of copyDatos">
+<div class="container-general">
+  <ion-list class="product-list" *ngIf="copyDatos && datos" lines="none">
+    <ion-item *ngFor="let dato of copyDatos">
       <ion-card>
-              <ion-card-content>
-                  <img src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
-                  <ion-title class="product-name">{{dato.nombre}}</ion-title>
-                  <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
-              </ion-card-content>
+        <ion-card-content>
+          <img src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+          <ion-title class="product-name">{{dato.nombre}}</ion-title>
+          <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
+        </ion-card-content>
       </ion-card>
-  </ion-item>
-</ion-list>
+    </ion-item>
+  </ion-list>
+</div>

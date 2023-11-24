@@ -1,12 +1,51 @@
+.container-general {
+  width: 100%;
+  height: 100%;
+}
 
-    #map {
-      width: 400px;
-      height: 400px;
-      opacity: 0;
-      transition: opacity 150ms ease-in;
-      display: block;
-      &.show-map{
-        opacity: 1;
-      }
-    }
+ion-searchbar{
+  width: 1100px;
+  color: #111d13;
+}
+/* Estilo para el contenedor principal */
+.container_buscador {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para el ion-searchbar */
+.buscador {
+  flex: 1; /* Toma el espacio restante disponible */
+  margin-right: 2px;
+}
+
+/* Estilo para el ion-button */
+.btn_buscador,
+.btn_micro,
+.btn_mapa,
+.btn_cancelar {
+  width: 47px; /* Ancho del botón */
+  height: 40px; /* Altura del botón */
+}
+
+/* Estilo para el contenido dentro del ion-button */
+.icono_buscador,
+.icono_micro,
+.icono_mapa,
+.icono_cancelar {
+  width: 60px; /* Ancho del botón */
+  height: 40px; /* Ajusta la altura del icono al 100% del botón */
+  object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
+}
+
+#map {
+  width: 400px;
+  height: 400px;
+  opacity: 0;
+  transition: opacity 150ms ease-in;
+  display: block;
+  &.show-map{
+    opacity: 1;
+  }
+}
   
