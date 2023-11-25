@@ -26,15 +26,22 @@
       </ion-button>
     </ion-buttons> 
   </div>
-
-  <ion-list *ngIf="!showMap" lines="none">
-    <ion-item *ngFor="let dato of copyDatos">
-      <img src="{{dato.imagenes[0][0]}}" alt="">
-      <p>{{dato.nombre}}</p>
-      <p>{{dato.descripcion}}</p>
-      <p>{{dato.costo}}</p>
-      <button (click)="solicitar([dato.idEquipoMedico,dato.idVendedor])">solicitar</button>
-    </ion-item>
-  </ion-list>
-  <div id="map" *ngIf="showMap"></div>
+  
+  <div class="container-productos">
+    <ion-list class="product-list" *ngIf="!showMap" lines="none">
+      <ion-item *ngFor="let dato of copyDatos">
+        <ion-card>
+          <ion-card-content>
+            <img src="{{dato.imagenes[0][0]}}" alt="">
+            <ion-title class="product-name">{{dato.nombre}}</ion-title>
+            <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
+            <ion-buttons class="btn-solicitar">
+              <ion-button (click)="solicitar([dato.idEquipoMedico,dato.idVendedor])" class="solicitar">SOLICITAR</ion-button>
+            </ion-buttons>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div id="map" *ngIf="showMap"></div> 
 </div>
