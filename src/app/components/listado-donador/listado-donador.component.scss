@@ -1,98 +1,179 @@
-ion-searchbar{
-    width: 1400px;
-    color: #111d13;
-}
-/* Estilo para el contenedor principal */
-.container_buscador {
-    display: flex;
-    align-items: center;
-}
+/* ----------------------- Escritorio ----------------------- */
 
-/* Estilo para el ion-searchbar */
-.buscador {
-    flex: 1; /* Toma el espacio restante disponible */
-    margin-right: 2px;
-}
+@media (min-width: 991px) {
+    .movil {
+        display: none;
+    }
 
-/* Estilo para el ion-button */
-.btn_buscador,
-.btn_micro {
-    width: 47px; /* Ancho del botón */
-    height: 40px; /* Altura del botón */
-}
+    ion-searchbar{
+        width: 1400px;
+        color: #111d13;
+    }
+    /* Estilo para el contenedor principal */
+    .container_buscador {
+        display: flex;
+        align-items: center;
+    }
 
-/* Estilo para el contenido dentro del ion-button */
-.icono_buscador,
-.icono_micro {
-    width: 60px; /* Ancho del botón */
-    height: 40px; /* Ajusta la altura del icono al 100% del botón */
-    object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
-}
+    /* Estilo para el ion-searchbar */
+    .buscador {
+        flex: 1; /* Toma el espacio restante disponible */
+        margin-right: 2px;
+    }
 
-  
-ion-card {
-    width: 320px; 
-    height: 350px;
-    margin: 10px;
-    border: 5px solid #90E0EF;
-    transition: transform 0.3s ease;
-}
+    /* Estilo para el ion-button */
+    .btn_buscador,
+    .btn_micro {
+        width: 47px; /* Ancho del botón */
+        height: 40px; /* Altura del botón */
+    }
 
-ion-card:hover {
-    transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
-}
+    /* Estilo para el contenido dentro del ion-button */
+    .icono_buscador,
+    .icono_micro {
+        width: 60px; /* Ancho del botón */
+        height: 40px; /* Ajusta la altura del icono al 100% del botón */
+        object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
+    }
 
-ion-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
-}
-
-/* Estilos para la información dentro de ion-card-content */
-.product-name,
-.product-description,
-.product-cost {
-    margin: 5px 0;
-}
-
-ion-card-content p {
-    text-decoration: none;
-}
-
-.product-name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #111d13;
-    height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; 
-}
-
-.product-description {
-    width: 295px;
-    height: 70px;
-    max-height: 90px;
-    margin-top: 5px;
-    font-size: 16px;
-    overflow: hidden;
-    color: #111d13;
-}
-
-.product-cost {
-    font-size: 22px;
     
-    color: #111d13;
-    width: 100%;
+    ion-card {
+        width: 320px; 
+        height: 350px;
+        margin: 10px;
+        border: 5px solid #90E0EF;
+        transition: transform 0.3s ease;
+    }
+
+    ion-card:hover {
+        transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
+    }
+
+    ion-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
+    }
+
+    /* Estilos para la información dentro de ion-card-content */
+    .product-name,
+    .product-description,
+    .product-cost {
+        margin: 5px 0;
+    }
+
+    ion-card-content p {
+        text-decoration: none;
+    }
+
+    .product-name {
+        font-size: 22px;
+        font-weight: bold;
+        color: #111d13;
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; 
+    }
+
+    .product-description {
+        width: 295px;
+        height: 70px;
+        max-height: 90px;
+        margin-top: 5px;
+        font-size: 16px;
+        overflow: hidden;
+        color: #111d13;
+    }
+
+    .product-cost {
+        font-size: 22px;
+        
+        color: #111d13;
+        width: 100%;
+    }
+
+    .estilos-a{
+        text-decoration: none;
+    }
 }
 
-.estilos-a{
-    text-decoration: none;
+// Telefono
+@media (max-width: 767px) {
+    .desktop {
+        display: none;
+    }
+
+    .container_buscador {
+        margin-top: 5px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    ion-searchbar{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        color: #111d13;
+    }
+
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    ion-item {
+        width: auto; 
+    }
+
+    ion-card {
+        height: 360px;
+        margin: 10px;
+        border: 5px solid #90E0EF;
+    }
+
+    ion-card-content {   
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-name {
+        width: auto;
+        font-size: 18px;
+        font-weight: bold;
+        color: #111d13;
+        margin-top: 5px;
+    }
+    
+    .product-description {
+        font-size: 14px;
+        color: #111d13;
+        width: auto;
+        height: auto;
+    }
+    
+    .product-cost {
+        font-size: 16px;
+        font-weight: bold;
+        color: #111d13;
+        margin-top: 5px;
+    }
+
+    .estilos-a{
+        text-decoration: none;
+    }
+
 }

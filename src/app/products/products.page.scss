@@ -1,252 +1,417 @@
-ion-content{
-  --background:  #E8E8E8;
-}
+@media (min-width: 991px) {
+  .movil {
+    display: none;
+  }
 
-ion-content {
-  #map {
-    width: 160px;
-    height: 160px;
-    opacity: 0;
-    transition: opacity 150ms ease-in;
-    display: block;
-    &.show-map{
-      opacity: 1;
+  ion-content{
+    --background:  #E8E8E8;
+  }
+  
+  ion-content {
+    #map {
+      width: 160px;
+      height: 160px;
+      opacity: 0;
+      transition: opacity 150ms ease-in;
+      display: block;
+      &.show-map{
+        opacity: 1;
+      }
     }
+  }
+  
+  ion-header {
+    height: 90px;
+  }
+  
+  ion-toolbar{
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    --background:   #5DADE2;
+  }
+  
+  .logo{
+    width: 220px; 
+    height: 160px;
+    margin: 0;
+    margin-top: 7px;
+  }
+  
+  // Body
+  
+  .container_compras {
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .mapa {
+    width: 300px; 
+    height: 200px; 
+    margin-top: 10px; 
+  }
+  
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ion-c-b{
+    background: #E8E8E8;
+    border-radius: 0; /* Elimina el contorno redondeado */
+    box-shadow: none; 
+    
+  }
+  
+  .cbotones {
+    padding: 0; /* Elimina el relleno interno del ion-buttons */
+  }
+  
+  .btn_acarrito,
+  .btn_comprar {
+    width: 180px; /* Ajusta el ancho según tus necesidades */
+    margin: 5px 10px 5px 0; /* Espacio entre los botones */
+  }
+  
+  
+  .container-btn_back{ // Contenedor del boton general
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .custom-button{ // Contenedor de boton
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  .icon_back { // Boton
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+  
+  .container-complete{
+    width: 1500px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  
+  // Contenedor de las imagenes pequeas y grande
+  
+  .container-agrupacion {
+    width: 1200px;
+    height: 400px;
+    margin: 0 auto; /* Centra horizontalmente el contenido dentro de container-complete */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 8px solid #3498db; /* Color y grosor del borde */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    
+  }
+  
+  .container_img {
+    width: 750px;
+    height: 500px;
+    display: flex;
+  }
+  
+  .container_left-v {
+    margin-right: 20px; /* Espaciado entre container_left-v y container_center */
+    
+  }
+  
+  .item-native div{
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container_left-v ion-list {
+    display: flex;
+    flex-direction: column; /* Imágenes apiladas verticalmente */
+    width: 100%;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    
+  }
+  
+  .container_left-v ion-item {
+    width: 100px;
+    padding: 0; /* Elimina el relleno interno de los ion-items */
+    margin: 0;
+    --background: #E8E8E8;
+  }
+  
+  .container_left-v img {
+    width: 100%; /* Tamaño mínimo de la imagen */
+    height: 100%; /* Tamaño mínimo de la imagen */
+    object-fit: cover; /* Ajusta la imagen para cubrir el espacio sin distorsionarla */
+    padding: 0;
+    margin: 0;
+    
+  }
+  
+  .container_center img#principal {
+    width: 100%; /* Tamaño de la imagen principal */
+    height: 300px; /* Tamaño de la imagen principal */
+    object-fit: cover; /* Ajusta la imagen principal para cubrir el espacio sin distorsionarla */
+    
+  }
+  
+  .container-forms {
+    width: 425px; /* Ajusta el ancho del container-forms según tus necesidades */
+    margin-left: 20px; /* Espaciado entre container_center y container-forms */
+  }
+  
+  .container_center{
+    width: 600px;
+    height: 600px;
+  }
+  
+  // Contenedor del forms
+  
+  /* Agrega estilos para el formulario */
+  .container-forms form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ion-item {
+    margin-bottom: 11px; /* Espaciado entre los ion-items */
+  }
+  
+  .campo{
+    border: 2px solid #3A0CA3; /* Color y grosor del borde */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  .desp{
+    --placeholder-color: black;
+  }
+  
+  /* Estilos para los botones */
+  ion-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px; /* Espaciado superior para los botones */
+  }
+  
+  ion-button {
+    width: 48%; /* Ancho de los botones */
+    background-color: #3A0CA3; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    border: none; /* Elimina el borde */
+    border-radius: 5px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: box-shadow 0.3s ease;
+  }
+  
+  ion-button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  /* Restablece la transformación al dejar de pasar sobre el botón */
+  ion-button:active {
+    box-shadow: none; /* Elimina la sombra al hacer clic en el botón */
+  }
+  
+  /* Agrega estilos para los inputs y selects */
+  ion-input,
+  ion-select {
+    width: 100%;
+  }
+  
+  /* Ajusta el estilo de la etiqueta de los ion-input */
+  ion-label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Ajusta el estilo de los ion-select-option */
+  ion-select-option {
+    font-size: 14px;
+  }
+  
+  /* Agrega un estilo para el espacio entre container_center y container-forms */
+  .container_center {
+    margin-right: 20px;
   }
 }
 
-ion-header {
-  height: 90px;
-}
+/* ----------------------- Celular ----------------------- */
 
-ion-toolbar{
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  --background:   #5DADE2;
-}
+@media (max-width: 767px) {
+  .desktop {
+    display: none;
+  }
 
-.logo{
-  width: 220px; 
-  height: 160px;
-  margin: 0;
-  margin-top: 7px;
-}
+  ion-content{
+    --background: #E8E8E8;
+  }
 
-// Body
+  ion-header {
+    height: 90px;
+  }
 
-.container_compras {
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+  ion-toolbar{
+    height: 90px;
+    width: 100%;
+    --background: #5DADE2;   
+  }
 
-.mapa {
-  width: 300px; 
-  height: 200px; 
-  margin-top: 10px; 
-}
+  .ion-logo{ // Contenedor ion-button del logo
+    padding-top: 10px;
+    width: 120px;
+    height: 100%;
+  }
 
-.button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  // Body
 
-.ion-c-b{
-  background: #E8E8E8;
-  border-radius: 0; /* Elimina el contorno redondeado */
-  box-shadow: none; 
+  .container-btn_back{ // Contenedor del boton general
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+  }
+
+  .custom-button{ // Contenedor de boton
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+  }
   
-}
+  .icon_back { // Boton
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
 
-.cbotones {
-  padding: 0; /* Elimina el relleno interno del ion-buttons */
-}
+  // Contenedores de imagenes
 
-.btn_acarrito,
-.btn_comprar {
-  width: 180px; /* Ajusta el ancho según tus necesidades */
-  margin: 5px 10px 5px 0; /* Espacio entre los botones */
-}
+  .container_img {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 5px;
+    border: 5px solid #0096c7;
+    background: #fff;
+  }
 
-
-.container-btn_back{ // Contenedor del boton general
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  margin-left: 5px;
-  margin-bottom: 15px;
-}
-
-.custom-button{ // Contenedor de boton
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  background-color: transparent;
-}
-
-.icon_back { // Boton
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-}
-
-.container-complete{
-  width: 1500px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-// Contenedor de las imagenes pequeas y grande
-
-.container-agrupacion {
-  width: 1200px;
-  height: 400px;
-  margin: 0 auto; /* Centra horizontalmente el contenido dentro de container-complete */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border: 8px solid #3498db; /* Color y grosor del borde */
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 20px; /* Espaciado interno */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+  .container_center {
+    padding-right: 10px;
+    padding-left: 15px;
+  }
   
-}
+  #principal {
+    width: 330px;
+    height: 100%;
+  }
 
-.container_img {
-  width: 750px;
-  height: 500px;
-  display: flex;
-}
-
-.container_left-v {
-  margin-right: 20px; /* Espaciado entre container_left-v y container_center */
+  .container_left-v {
+    width: 80px;
+    
+  }
   
-}
-
-.item-native div{
-  padding: 0;
-  margin: 0;
-}
-
-.container_left-v ion-list {
-  display: flex;
-  flex-direction: column; /* Imágenes apiladas verticalmente */
-  width: 100%;
-  overflow-y: auto;
-  padding: 0;
-  margin: 0;
+  .container-agrupacion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+  }
   
-}
-
-.container_left-v ion-item {
-  width: 100px;
-  padding: 0; /* Elimina el relleno interno de los ion-items */
-  margin: 0;
-  --background: #E8E8E8;
-}
-
-.container_left-v img {
-  width: 100%; /* Tamaño mínimo de la imagen */
-  height: 100%; /* Tamaño mínimo de la imagen */
-  object-fit: cover; /* Ajusta la imagen para cubrir el espacio sin distorsionarla */
-  padding: 0;
-  margin: 0;
+  .container-forms {
+    border: 3px solid #0077b6;
+    width: 400px;
+    margin: 20px auto; /* Centrar vertical y horizontalmente */
+    padding: 20px; /* Agregar un espacio interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+  }
   
-}
-
-.container_center img#principal {
-  width: 100%; /* Tamaño de la imagen principal */
-  height: 300px; /* Tamaño de la imagen principal */
-  object-fit: cover; /* Ajusta la imagen principal para cubrir el espacio sin distorsionarla */
+  .campo {
+    width: 100%;
+    margin-bottom: 10px;
+  }
   
-}
+  .desp {
+    margin-bottom: 20px;
+  }
 
-.container-forms {
-  width: 425px; /* Ajusta el ancho del container-forms según tus necesidades */
-  margin-left: 20px; /* Espaciado entre container_center y container-forms */
-}
+  .container_left-v ion-item {
+    width: 100px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .desp{
+    --placeholder-color: black;
+  }
 
-.container_center{
-  width: 600px;
-  height: 600px;
-}
+  .container_compras {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-// Contenedor del forms
+  .mapa {
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-/* Agrega estilos para el formulario */
-.container-forms form {
-  display: flex;
-  flex-direction: column;
-}
-
-ion-item {
-  margin-bottom: 11px; /* Espaciado entre los ion-items */
-}
-
-.campo{
-  border: 2px solid #3A0CA3; /* Color y grosor del borde */
-  border-radius: 5px; /* Bordes redondeados */
-}
-
-.desp{
-  --placeholder-color: black;
-}
-
-/* Estilos para los botones */
-ion-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 3px; /* Espaciado superior para los botones */
-}
-
-ion-button {
-  width: 48%; /* Ancho de los botones */
-  background-color: #3A0CA3; /* Color de fondo del botón */
-  color: #fff; /* Color del texto */
-  border: none; /* Elimina el borde */
-  border-radius: 5px;
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: box-shadow 0.3s ease;
-}
-
-ion-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-}
-
-/* Restablece la transformación al dejar de pasar sobre el botón */
-ion-button:active {
-  box-shadow: none; /* Elimina la sombra al hacer clic en el botón */
-}
-
-/* Agrega estilos para los inputs y selects */
-ion-input,
-ion-select {
-  width: 100%;
-}
-
-/* Ajusta el estilo de la etiqueta de los ion-input */
-ion-label {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* Ajusta el estilo de los ion-select-option */
-ion-select-option {
-  font-size: 14px;
-}
-
-/* Agrega un estilo para el espacio entre container_center y container-forms */
-.container_center {
-  margin-right: 20px;
+  .cbotones {
+    display: flex;
+    gap: 8px; /* Ajusta el espacio entre los botones según sea necesario */
+    background:  #E8E8E8;
+  }
+  
+  .btn_acarrito,
+  .btn_comprar {
+    background-color: #0077b6;
+    color: #fff;
+    padding: 8px 12px; /* Ajusta el padding según sea necesario */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn_acarrito:hover,
+  .btn_comprar:hover {
+    background-color: #005689;
+  }
+  
+  
+  
 }

@@ -141,12 +141,13 @@
         margin-top: 25px;   
     }
 }
+// Telefono
 @media (max-width: 767px) {
     .desktop {
         display: none;
     }
     ion-content{
-        --background:  #E8E8E8;
+        --background: #E8E8E8;
     }
     ion-header {
         height: 90px;
@@ -155,10 +156,7 @@
     ion-toolbar{
         height: 90px;
         width: 100%;
-        --background:   #5DADE2;
-        
-        
-        
+        --background: #5DADE2;   
     }
 
     .btn_micro{
@@ -276,5 +274,7 @@
         width: 100%;
         height: 100%;  
         margin-top: 5px;   
+        margin: 0;
+        padding: 0;
     }
 }

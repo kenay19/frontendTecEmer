@@ -1,131 +1,257 @@
-.container-general {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 10px;
-  padding: 10px;
-}
+@media (min-width: 991px) {
+  .movil {
+      display: none;
+  }
 
-ion-searchbar{
-  width: 1100px;
-  color: #111d13;
-}
-/* Estilo para el contenedor principal */
-.container_buscador {
-  display: flex;
-  align-items: center;
-}
+  .container-general {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px;
+  }
 
-/* Estilo para el ion-searchbar */
-.buscador {
-  flex: 1; /* Toma el espacio restante disponible */
-  margin-right: 2px;
-}
+  ion-searchbar{
+    width: 1100px;
+    color: #111d13;
+  }
+  /* Estilo para el contenedor principal */
+  .container_buscador {
+    display: flex;
+    align-items: center;
+  }
 
-/* Estilo para el ion-button */
-.btn_buscador,
-.btn_micro,
-.btn_mapa,
-.btn_cancelar {
-  width: 47px; /* Ancho del botón */
-  height: 40px; /* Altura del botón */
-}
+  /* Estilo para el ion-searchbar */
+  .buscador {
+    flex: 1; /* Toma el espacio restante disponible */
+    margin-right: 2px;
+  }
 
-/* Estilo para el contenido dentro del ion-button */
-.icono_buscador,
-.icono_micro,
-.icono_mapa,
-.icono_cancelar {
-  width: 60px; /* Ancho del botón */
-  height: 40px; /* Ajusta la altura del icono al 100% del botón */
-  object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
-}
+  /* Estilo para el ion-button */
+  .btn_buscador,
+  .btn_micro,
+  .btn_mapa,
+  .btn_cancelar {
+    width: 47px; /* Ancho del botón */
+    height: 40px; /* Altura del botón */
+  }
 
-#map {
-  width: 400px;
-  height: 400px;
-  opacity: 0;
-  transition: opacity 150ms ease-in;
-  display: block;
-  &.show-map{
-    opacity: 1;
+  /* Estilo para el contenido dentro del ion-button */
+  .icono_buscador,
+  .icono_micro,
+  .icono_mapa,
+  .icono_cancelar {
+    width: 60px; /* Ancho del botón */
+    height: 40px; /* Ajusta la altura del icono al 100% del botón */
+    object-fit: cover; /* Ajusta el tamaño del objeto para cubrir completamente el espacio del botón */
+  }
+
+  #map {
+    width: 400px;
+    height: 400px;
+    opacity: 0;
+    transition: opacity 150ms ease-in;
+    display: block;
+    &.show-map{
+      opacity: 1;
+    }
+  }
+
+  // Body
+
+  ion-card {
+    width: 320px; 
+    height: 340px;
+    margin: 10px;
+    border: 5px solid #90E0EF;
+    transition: transform 0.3s ease;
+  }
+
+  ion-card:hover {
+    transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
+  }
+
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
+  }
+
+  ion-item {
+    width: auto; /* Ajusta el ancho del elemento según el contenido */
+  }
+
+  .product-name,
+  .product-description {
+    margin: 5px 0;
+  }
+
+  .product-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #111d13;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; 
+  }
+
+  .product-description {
+    width: 295px;
+    height: 70px;
+    max-height: 90px;
+    margin-top: 5px;
+    font-size: 14px;
+    overflow: hidden;
+    color: #111d13;
+  }
+
+  /* Estilo para el botón SOLICITAR */
+  .btn-solicitar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .solicitar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 12px; /* Reduje aún más el espaciado interno */
+    font-size: 12px; /* Disminuí más el tamaño de la fuente */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+  }
+
+  .solicitar:hover {
+    background-color: #45a049;
   }
 }
 
-// Body
+// Telefono
+@media (max-width: 767px) {
+  .desktop {
+      display: none;
+  }
 
-ion-card {
-  width: 320px; 
-  height: 340px;
-  margin: 10px;
-  border: 5px solid #90E0EF;
-  transition: transform 0.3s ease;
-}
+  .container-general {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 10px;
+  }
 
-ion-card:hover {
-  transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
-}
+  /* Estilo para el contenedor principal */
+  .container_buscador {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
 
-ion-card-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  ion-button {
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+    display: flexbox;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
 
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
-}
+  ion-searchbar {
+    border: 2px solid #b0b8b9;
+  }
 
-ion-item {
-  width: auto; /* Ajusta el ancho del elemento según el contenido */
-}
+  //Body
 
-.product-name,
-.product-description {
-  margin: 5px 0;
-}
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
-.product-name {
-  font-size: 22px;
-  font-weight: bold;
-  color: #111d13;
-  height: 50px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal; 
-}
+  ion-item {
+    width: auto; 
+  }
 
-.product-description {
-  width: 295px;
-  height: 70px;
-  max-height: 90px;
-  margin-top: 5px;
-  font-size: 14px;
-  overflow: hidden;
-  color: #111d13;
-}
+  ion-card {
+    height: 360px;
+    margin: 10px;
+    border: 5px solid #90E0EF;
+  }
 
-/* Estilo para el botón SOLICITAR */
-.btn-solicitar {
-  display: flex;
-  justify-content: center;
-}
+  ion-card-content {   
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
 
-.solicitar {
-  background-color: #4CAF50;
-  color: white;
-  padding: 6px 12px; /* Reduje aún más el espaciado interno */
-  font-size: 12px; /* Disminuí más el tamaño de la fuente */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  outline: none;
-}
+  .product-name {
+    width: auto;
+    font-size: 18px;
+    font-weight: bold;
+    color: #111d13;
+    margin-top: 5px;
+  }
 
-.solicitar:hover {
-  background-color: #45a049;
+  .product-description {
+    font-size: 14px;
+    color: #111d13;
+    width: auto;
+    height: auto;
+  }
+
+  .btn-solicitar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .solicitar {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    font-size: 16px;
+    padding: 3px 5px; /* Espaciado interno, ajusta según tus necesidades */
+    border-radius: 5px; /* Bordes redondeados */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efecto de transición al pasar el ratón */
+  
+    &:hover {
+      background-color: #45a049; /* Cambio de color al pasar el ratón */
+    }
+  }
+
+  #map {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transition: opacity 150ms ease-in;
+    display: block;
+    &.show-map{
+      opacity: 1;
+    }
+  }
+  
+
 }

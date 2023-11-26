@@ -1,63 +1,129 @@
-ion-card {
-    width: 320px; 
-    height: 290px;
-    margin: 10px;
-    border: 5px solid #90E0EF;
-    transition: transform 0.3s ease;
+/* ----------------------- Escritorio ----------------------- */
+
+@media (min-width: 991px) {
+    .movil {
+        display: none;
+    }
+
+    ion-card {
+        width: 320px; 
+        height: 290px;
+        margin: 10px;
+        border: 5px solid #90E0EF;
+        transition: transform 0.3s ease;
+    }
+
+    ion-card:hover {
+        transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
+    }
+
+    ion-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
+    }
+
+    ion-item {
+        width: auto; /* Ajusta el ancho del elemento según el contenido */
+    }
+
+    .product-name,
+    .product-description {
+        margin: 5px 0;
+    }
+
+    .product-name {
+        font-size: 22px;
+        font-weight: bold;
+        color: #111d13;
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal; 
+    }
+
+    .product-description {
+        width: 295px;
+        height: 70px;
+        max-height: 90px;
+        margin-top: 5px;
+        font-size: 14px;
+        overflow: hidden;
+        color: #111d13;
+    }
+
+    .product-cost {
+        font-size: 16px;
+        font-weight: bold;
+        color: #111d13;
+    }
+
+    .estilos-a{
+        text-decoration: none;
+    }
 }
 
-ion-card:hover {
-    transform: translateY(-5px); /* Eleva el ion-card cuando el cursor está sobre él */
-}
+// Telefono
+@media (max-width: 767px) {
+    .desktop {
+        display: none;
+    }
 
-ion-card-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Ajusta según tu preferencia, center o space-around, etc. */
-}
+    ion-item {
+        width: auto; 
+    }
 
-ion-item {
-    width: auto; /* Ajusta el ancho del elemento según el contenido */
-}
+    ion-card {
+        height: 290px;
+        margin: 10px;
+        border: 5px solid #90E0EF;
+    }
 
-.product-name,
-.product-description {
-    margin: 5px 0;
-}
+    ion-card-content {   
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
 
-.product-name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #111d13;
-    height: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; 
-}
+    .product-name {
+        width: 100%;
+        font-size: 18px;
+        font-weight: bold;
+        color: #111d13;
+        margin-top: 50px;
+    }
+    
+    .product-description {
+        font-size: 14px;
+        color: #111d13;
+        width: auto;
+        height: auto;
+    }
 
-.product-description {
-    width: 295px;
-    height: 70px;
-    max-height: 90px;
-    margin-top: 5px;
-    font-size: 14px;
-    overflow: hidden;
-    color: #111d13;
-}
+    .estilos-a{
+        text-decoration: none;
+    }
 
-.product-cost {
-    font-size: 16px;
-    font-weight: bold;
-    color: #111d13;
-}
+    img {
+        width: 100%; /* Haz que la imagen ocupe todo el ancho disponible */
+        height: auto; /* Mantén la proporción original de la imagen */
+        margin-bottom: 5px; /* Agrega un margen inferior para separar la imagen del título */
+      }
 
-.estilos-a{
-    text-decoration: none;
 }
