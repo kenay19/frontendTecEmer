@@ -74,24 +74,29 @@ export class ListadoSolicitanteComponent implements OnInit {
   }
 
   buscar(nombre) {
-    
     this.busqueda = nombre;
 
+    const nombreNormalizado = nombre.toLowerCase().trim(); // Normalizar el texto de búsqueda
+  
+    // Filtrar los datos normalizados
+    let buscado = this.datos.filter((item) => {
+      return item.nombre.toLowerCase().trim() === nombreNormalizado;
+    });
+  
+    // Restaurar los nombres originales a partir de los datos filtrados
+    this.copyDatos = buscado
+    
     let usuario = JSON.parse(localStorage.getItem('Usuario')).idUsuario;
     let coordenadas = [];
     let idVendedores = [];
     let userCoordenates = [];
 
-    let buscado = this.datos.filter((item) => {
-      return item.nombre == nombre;
-    });
-
-    this.copyDatos = buscado;
-
     // Crear promesas para obtener las coordenadas y los identificadores de los vendedores
     let promises = buscado.map((item) => {
       return new Promise((resolve) => {
         this.products.getCoordenates(item.idVendedor).subscribe((data) => {
+          
+        
           coordenadas.push([parseFloat(data[0].lat), parseFloat(data[0].alt)]);
           idVendedores.push(item.idVendedor);
           resolve(1); // Resuelve la promesa una vez se han obtenido las coordenadas
@@ -109,7 +114,6 @@ export class ListadoSolicitanteComponent implements OnInit {
         resolve(1);
       });
     });
-
     // Esperar a que todas las promesas se completen
     Promise.all([...promises, userPromise]).then(() => {
       let distancias = [];
@@ -127,18 +131,16 @@ export class ListadoSolicitanteComponent implements OnInit {
       distancias = distancias.sort((a, b) => {
         return a.distancia - b.distancia;
       });
+      console.log(distancias)
       let datos = [];
       for (let i = 0; i < distancias.length; i++) {
         let dato = this.datos.filter((item) => {
+          console.log(distancias[i],item.idEquipoMedico)
           return (
-            item.idVendedor == distancias[i]['id'] && item.nombre == nombre
+            item.idVendedor == distancias[i]['id'] && item.nombre.toLowerCase().trim() == nombreNormalizado
           );
         })[0];
         datos.push(dato);
-      }
-      if(!this.showMap) {
-        
-      this.copyDatos = datos;
       }
       if(this.showMap) {
         this.loadMap({
@@ -162,6 +164,7 @@ export class ListadoSolicitanteComponent implements OnInit {
       }
       // Aquí puedes trabajar con las coordenadas, identificadores y las del usuario
     });
+    return
   }
 
   calcularDistanciaPrecisa(
@@ -196,7 +199,7 @@ export class ListadoSolicitanteComponent implements OnInit {
   loadMap(equipoMedico) {
     const mapEle = this.elementRef.nativeElement.querySelector('#map');
     // create LatLng object
-    console.log(mapEle)
+   
     const myLatLng = {
       lat: equipoMedico.coordenadas[0][0],
       lng: equipoMedico.coordenadas[0][1],

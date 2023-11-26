@@ -9,6 +9,6 @@ export class MedictoolsService {
   constructor(private crud:HttpClient) { }
 
   guardar(nombre, descripcion, costo, idVendedor,imagenes) {
-    return this.crud.post('http://localhost:3000/medictools/register', {nombre, descripcion, costo, idVendedor,imagenes})
+    return this.crud.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/register', {nombre, descripcion, costo, idVendedor,imagenes})
   }
 }

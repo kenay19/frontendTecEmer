@@ -12,7 +12,7 @@ export class AuthenticateService {
    }
 
   registraruser(datos){
-    return this.http.post('http://localhost:3000/authentication/UsersRegisters',datos);
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/UsersRegisters',datos);
   }
 
   generateCoordenates(address){
@@ -20,23 +20,23 @@ export class AuthenticateService {
   }
 
   loginUser(email,contrasena){
-    return this.http.post('http://localhost:3000/authentication/UsersLogin',{email, contrasena});
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/UsersLogin',{email, contrasena});
   }
 
   cargarImagenesLogin(img) {
-    return this.http.post('http://localhost:3000/authentication/CargarImagenesLogin',{img});
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/CargarImagenesLogin',{img});
   }
 
   cargarImagenesRegistro(img){
-    return this.http.post('http://localhost:3000/authentication/CargarImagenesRegistro',{img});
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/CargarImagenesRegistro',{img});
   }
 
   generateVectorCaracteristicas(tipo){
-    return this.http.post('http://localhost:3000/authentication/LoginWithFace',{tipo});
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/LoginWithFace',{tipo});
   }
 
   logueoFacial(tipo){
-    return this.http.post('http://localhost:3000/authentication/LoginFacial',{tipo});
+    return this.http.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/authentication/LoginFacial',{tipo});
   }
   
   getUser(){

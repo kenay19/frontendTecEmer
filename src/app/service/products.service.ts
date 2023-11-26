@@ -8,56 +8,56 @@ export class ProductsService {
   constructor(private product : HttpClient) { }
 
   getProductsids(idVendedor){
-    return this.product.post('http://localhost:3000/medictools/getProductsIds',{idVendedor})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getProductsIds',{idVendedor})
   }
 
   getProducts(idVendedor){
-    return this.product.post('http://localhost:3000/medictools/getProducts',{idVendedor})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getProducts',{idVendedor})
   }
 
   getProduct(idProduct){
-    return this.product.post('http://localhost:3000/medictools/getProduct',{idProduct})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getProduct',{idProduct})
 
   }
 
   getImageProducts(idImagen){
-    return this.product.post('http://localhost:3000/medictools/getImageProducts',idImagen,{ responseType: 'blob' })
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getImageProducts',idImagen,{ responseType: 'blob' })
   }
 
   updateProduct(datos){
-    return this.product.put('http://localhost:3000/medictools/updateProduct',datos);
+    return this.product.put('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/updateProduct',datos);
   }
 
   deleteProduct(idEquipoMedico){
-    return this.product.post('http://localhost:3000/medictools/deleteProduct',{idEquipoMedico})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/deleteProduct',{idEquipoMedico})
   }
 
   getProductsDonador(){
-    return this.product.get('http://localhost:3000/medictools/getProductsDonador');
+    return this.product.get('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getProductsDonador');
   }
 
   findProduct(producto){
-    return this.product.post('http://localhost:3000/medictools/findProduct',[producto])
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/findProduct',[producto])
   }
 
   getCoordenates(idVendedor){
-    return this.product.post('http://localhost:3000/medictools/getCoordenates',{idVendedor})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getCoordenates',{idVendedor})
   }
 
   compraVenta(idEquipoMedico,idUsuario){
-    return this.product.post('http://localhost:3000/medictools/compraVenta',{idEquipoMedico,idUsuario});
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/compraVenta',{idEquipoMedico,idUsuario});
   }
 
   getProductsSolicitante(){
-    return this.product.get('http://localhost:3000/medictools/getProductsSolicitante')
+    return this.product.get('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getProductsSolicitante')
   }
 
   donacionAsignada(idEquipoMedico,idSolicitante){
-    return this.product.post('http://localhost:3000/medictools/DonacionAsignada',{idEquipoMedico,idSolicitante})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/DonacionAsignada',{idEquipoMedico,idSolicitante})
   }
 
   getDonacionesAsignadas(idSolicitante){
-    return this.product.post('http://localhost:3000/medictools/getDonacionesAsignadas',{idSolicitante})
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/getDonacionesAsignadas',{idSolicitante})
   }
 
   getTranscription(audioBlob){
@@ -68,6 +68,6 @@ export class ProductsService {
     const options = {
       headers: header,
     }
-    return this.product.post('http://localhost:3000/medictools/transcribe',formData,options);
+    return this.product.post('https://saludonlinehub-4215a7ac39d8.herokuapp.com/medictools/transcribe',formData,options);
   }
 }
