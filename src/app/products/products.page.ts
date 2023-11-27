@@ -158,6 +158,7 @@ export class ProductsPage implements OnInit {
   delete(idProducto) {
     console.log(idProducto);
     this.products.deleteProduct(idProducto).subscribe((product) => {
+      console.log(product);
       if (product['affectedRows'] == 1) {
         this.createAlert({ header: 'Producto Eliminado Correctamente' });
       }
