@@ -39,6 +39,8 @@ export class CameraLogPage implements OnInit {
   /**
    *  Esta funcion inicia la camara del dispositvo, y los muestra en una etiqueta para la retroalimentacion del usuario
    */
+
+  
   async abrirCamaraConVistaPrevia() {
     const previewElement =
       this.elementRef.nativeElement.querySelector('#camara-preview');

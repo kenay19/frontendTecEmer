@@ -28,12 +28,16 @@ export class ListadoVendedorComponent implements OnInit {
           const response = await this.products
             .getImageProducts(this.datos[i]['imagenes'][j][0])
             .toPromise();
+          console.log(response);
           this.datos[i]['imagenes'][j][0] = URL.createObjectURL(response);
+          console.log(this.datos[i]['imagenes'][j][0])
         } catch (error) {
-          console.error(`Error al cargar la imagen: ${error}`);
+          console.error(`Error al cargar la imagen: ${error.message}`);
         }
       }
+      
     }
+    console.log(this.copyDatos);
     this.copyDatos = this.datos;
   }
 

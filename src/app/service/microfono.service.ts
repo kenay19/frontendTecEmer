@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ProductsService } from './products.service';
+import { Plugins, Capacitor } from '@capacitor/core';
+
+const { CapacitorAudio } = Plugins;
 
 @Injectable({
   providedIn: 'root'
 })
 export class MicrofonoService {
-
+  private audioRecorder: any;
   stream: any;
   mediaRecorder: any;
   chunks: any[] = [];
@@ -50,5 +53,35 @@ export class MicrofonoService {
       resolve(this.datos);
       
     });
+  }
+
+  async startRecording(sampleRate: number = 48000) {
+    if (!Capacitor.isPluginAvailable('CapacitorAudio')) {
+      throw new Error('El plugin Capacitor Audio no está disponible en este dispositivo.');
+    }
+
+    try {
+      const result = await CapacitorAudio['requestPermissions']();
+      if (result.granted) {
+        this.audioRecorder = await CapacitorAudio['startRecording']();
+        return this.audioRecorder;
+      } else {
+        throw new Error('Permiso denegado para acceder al micrófono.');
+      }
+    } catch (error) {
+      throw new Error('Error al iniciar la grabación: ' + error);
+    }
+  }
+
+  async stopRecording() {
+    if (this.audioRecorder) {
+      try {
+        const result = await CapacitorAudio['stopRecording']();
+        this.audioRecorder = null;
+        return result.path;
+      } catch (error) {
+        throw new Error('Error al detener la grabación: ' + error);
+      }
+    }
   }
 }
