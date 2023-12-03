@@ -1,6 +1,7 @@
 <ion-content [fullscreen]="true" class="custom-form">
   <ion-title size="large" class="form-title">Registro de usuarios</ion-title>
   <div class="form-container">
+    <ion-button (click)="PageReturn()">Regresar</ion-button>
     <div class="left-column">
       <form>
         <ion-item>
@@ -20,7 +21,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-input label="Celular *" maxlength="10" type="tel" #celular></ion-input>
+          <ion-input label="Celular *" maxlength="10" minlength="10" type="tel" #celular></ion-input>
         </ion-item>
 
         <ion-item>
@@ -29,6 +30,9 @@
 
         <ion-item>
           <ion-input label="Contraseña *" type="password" #contrasena></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Vuelve a introducir la Contraseña *" type="password" #contrasenaConfirmacion></ion-input>
         </ion-item>
 
         <ion-item>
@@ -74,7 +78,7 @@
   </div>
   <div class="btn-container">
     <ion-button class="btn_salir" (click)="PageReturn()">Regresar</ion-button>
-    <ion-button class="button" (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol,contrasena)">
+    <ion-button class="button" (click)="registrar(nombre, app, apm, telefonoFijo, celular, email, calle, inte, exte, colonia, municipio, estado, cp, idRol,contrasena,contrasenaConfirmacion)">
       <span class="circle1"></span>
       <span class="circle2"></span>
       <span class="circle3"></span>

@@ -80,29 +80,28 @@ export class CameraLogPage implements OnInit {
       // Enviar la matriz de píxeles al backend
 
       try {
-        await this.auth
-          .cargarImagenesLogin(resizedImageData.data)
-          .subscribe((data) => {
-            if (data['message'] === 'Imagen cargada correctamente') {
-              this.auth
-                .logueoFacial('login')
-                .subscribe((data) => {
-                  if(data[0]['idUsuario'] ){
-                    localStorage.setItem("Usuario",JSON.stringify(data[0]))
-
-                    this.auth.setUser(data[0])
-                    this.stopVideo()
-                    this.router.navigate([this.direccion[data[0]['idRol']-1]])
-                  }
-                });
+        const imagenMessage = await this.auth.cargarImagenesLogin(resizedImageData.data).toPromise();
+        console.log(imagenMessage);
+        if(imagenMessage['message']=== 'Imagen cargada correctamente'){
+          console.log('identificando')
+          const data  = await this.auth.logueoFacial('login').toPromise()
+          try{
+            if (data[0]['idUsuario']){
+              localStorage.setItem("Usuario",JSON.stringify(data[0]))   
+              this.stopVideo()
+              this.router.navigate([this.direccion[data[0]['idRol']-1]])
+              console.log('identificado padrino');
+              break;
             }
-          });
+          }catch (error){
+            
+          }
+        }
       } catch (error) {
         console.error(error);
       }
 
       // Espera un breve período de tiempo antes de capturar el siguiente fotograma
-      await new Promise((resolve) => setTimeout(resolve, 4000));
     }
   }
 
@@ -119,7 +118,7 @@ export class CameraLogPage implements OnInit {
    */
   navigateToRegisterUser() {
     this.stopVideo();
-    this.router.navigate(['/register']);
+    this.router.navigate(['/register','camera']);
   }
 
   
@@ -127,6 +126,7 @@ export class CameraLogPage implements OnInit {
    * Detiene el video generado y redirrecciona al usuario a la pagina de inicio
    */
   HomeReturn() {
+    console.log('regresando')
     this.stopVideo();
     this.router.navigate(['/']);
   }
@@ -135,10 +135,11 @@ export class CameraLogPage implements OnInit {
    * Detiene el video antes de navegar a otra pagina666
    */
   stopVideo() {
+    this.capturingFrames = false;
     if (this.stream) {
       // Comprueba si el stream está definido
       const tracks = this.stream.getTracks();
-      this.capturingFrames = false;
+      
       tracks.forEach((track) => {
         // Detiene cada pista del stream
         track.stop();

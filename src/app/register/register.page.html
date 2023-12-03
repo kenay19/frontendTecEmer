@@ -3,11 +3,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-button (click)="PageReturn()"> return </ion-button>
   <div class="container-left">
     <p class="photo-counter">Número de fotos tomadas {{intentosNum}}</p>
     <div class="video-container">
       <video id="video" controls></video>
     </div>
+    <p *ngIf="estado == 'iniciando' || estado == 'imagen procesada'"> {{mensaje}}</p>
+    <p *ngIf="estado == 'procesando' "> {{mensaje}}</p>
+    <p *ngIf="estado == 'imagen no valida' "> {{mensaje}}</p>
     <ion-button (click)="showFoto()">Tomar foto</ion-button>
   </div>
   <div class="photo-container">

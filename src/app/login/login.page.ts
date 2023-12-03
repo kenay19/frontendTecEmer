@@ -19,7 +19,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   cambiopagina() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/register','login']);
   }
 
   loginUser(email, contrasena) {

@@ -9,28 +9,38 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  intentosNum: number = 0;
-  vectores: any[] = [];
+  intentosNum!: number ;
+  vectores!: any[] ;
   mediaStream: MediaStream;
   stream!: any;
   tomarFoto: boolean = true;
   capturingFrames: boolean = true;;
-
+  estado = 'iniciando';
+  mensaje = 'por favor tome una foto'
   constructor(private elementRef: ElementRef,private auth:AuthenticateService,private alert:AlertController,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
+    this.intentosNum = 0;
+    this.vectores = [];
     this.capturingFrames = true;
     this.abrirCamaraConVistaPrevia();
   }
 
   showFoto() {
+    if(this.estado == 'iniciando' || this.estado == 'imagen procesada' || this.estado == 'imagen no valida'){
+      this.estado = 'procesando';
+      this.mensaje = 'procesando imagen espere';
       this.tomarFoto = true;
       this.capturingFrames = true;
       this.captureFrames();
-    
+      return 
+    }
+    if(this.estado == 'procesando'){
+      this.mensaje = 'por favor espere a que se termine de procesar la imagen'
+    }
   }
 
   async abrirCamaraConVistaPrevia() {
@@ -47,16 +57,18 @@ export class RegisterPage implements OnInit {
   }
 
   stopVideo() {
+    this.capturingFrames = false;
     if (this.stream) {
       // Comprueba si el stream está definido
       const tracks = this.stream.getTracks();
-      this.capturingFrames = false;
+      
       tracks.forEach((track) => {
         // Detiene cada pista del stream
         track.stop();
       });
     }
   }
+  
 
   /**
    * Del video generado en la funcion abrirCamaraConVistaPrevia toma capturas de pantalla, a las cuales obtiene su matriz
@@ -84,35 +96,31 @@ export class RegisterPage implements OnInit {
       // Enviar la matriz de píxeles al backend
 
       try {
-        await this.auth
-          .cargarImagenesRegistro(resizedImageData.data)
-          .subscribe((data) => {
-            if (data['message'] === 'Imagen cargada correctamente') {
-              this.auth
-                .generateVectorCaracteristicas('registro')
-                .subscribe((data) => {
-                  if (
-                    Object.keys(data).length == 68 ||
-                    Object.keys(data).length == 67
-                  ) {
-                    this.vectores.push(Object.values(data));
-                    this.intentosNum = this.vectores.length
-                    if(this.intentosNum == 3) {
-                      this.stopVideo()
-                      this.route.params.subscribe((params) => {
-                        if(params['origin'] == 'camera'){
-                          this.router.navigate(['/registro-usuarios','camera',this.vectores]);
-                          return
-                        }
-                        this.router.navigate(['/registro-usuarios','login',this.vectores]);
-                      })
-                    }
-                  }else{
-                    this.crearAlerta();
-                  }
-                });
+        const messageImage =await this.auth.cargarImagenesRegistro(resizedImageData.data).toPromise();
+        if(messageImage['message']=== 'Imagen cargada correctamente'){
+          const vectores = await this.auth.generateVectorCaracteristicas('registro').toPromise();
+          console.log(vectores)
+          if(Object.keys(vectores).length == 68 || Object.keys(vectores).length == 67){
+            this.vectores.push(Object.values(vectores));
+            this.intentosNum = this.vectores.length;
+            this.estado = 'imagen procesada';
+            this.mensaje  = 'por favor tome la siguiente foto'
+            if(this.intentosNum == 3) {
+              this.stopVideo()
+              this.route.params.subscribe((params) => {
+                if(params['origin'] == 'camera'){
+                  this.router.navigate(['/registro-usuarios','camera',this.vectores]);
+                  return
+                }
+                this.router.navigate(['/registro-usuarios','login',this.vectores]);
+              })
             }
-          });
+          }else{
+            this.estado = 'imagen no valida';
+            this.mensaje  = 'por favor vuelva a tomar la foto'
+            this.crearAlerta();
+          }
+        }
       } catch (error) {
         console.error(error);
       }
@@ -131,12 +139,17 @@ export class RegisterPage implements OnInit {
   }
 
   PageReturn(){
-    this.route.params.subscribe((params) => {
-      if(params['origin'] == 'camera'){
-        this.router.navigate(['/camera-log']);
-        return
+    this.route.params.subscribe(param => {
+      if (param['origin']== 'camera'){
+        this.stopVideo()
+      this.router.navigate(['/camera-log']);
+      return
       }
+      this.stopVideo()
       this.router.navigate(['/login']);
     })
+      
+  
   }
+  
 }
