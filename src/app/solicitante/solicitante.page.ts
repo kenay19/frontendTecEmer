@@ -8,11 +8,14 @@ import { Router } from '@angular/router';
 })
 export class SolicitantePage implements OnInit {
 
-  page =  'solicitud'
-
+  page =  'listado'
+  usuario!: any;
+  nombre !: string
   constructor(private router:Router) { }
 
   ngOnInit() {
+    this.usuario = JSON.parse(localStorage.getItem('Usuario'));
+    this.nombre = this.usuario.nombre
   }
 
   changeView(page){

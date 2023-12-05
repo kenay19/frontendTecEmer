@@ -22,6 +22,11 @@ export class ListadoSolicitanteComponent implements OnInit {
   busqueda!: string;
   map = null;
   mensaje : string = 'mostrar mapa'
+  imageURL : string = "/assets/producto_generico.jpg"
+  valor : string = ''
+  miCoordenada !: any [];
+  coordenadas !: any []
+
   
   shearch:boolean = true;
   constructor(
@@ -30,7 +35,8 @@ export class ListadoSolicitanteComponent implements OnInit {
     private alertController: AlertController,
     private microfono:MicrofonoService
   ) {}
-
+  
+  //se queda
   async ngOnInit() {
     const productos = await this.products.getProductsSolicitante().toPromise();
     for (let i = 0; i < Object.keys(productos).length; i++) {
@@ -50,18 +56,23 @@ export class ListadoSolicitanteComponent implements OnInit {
     this.copyDatos = this.datos;
   }
 
+  // se queda
   solicitar(id) {
     const equipoMedico = this.datos.filter(item => {return item.idEquipoMedico === id[0] && item.idVendedor == id[1]})
     this.alerta(equipoMedico[0]); 
   }
 
+
+  // se queda
   cancelar(busqueda){
     this.copyDatos = this.datos;
     busqueda.value = '';
+    this.valor = ''
     this.mensaje = 'mostrar mapa';
     this.showMap = false;
   }
 
+  // se modificara
   changeView(busqueda){
     this.buscar(busqueda)
     if(this.mensaje === 'mostrar mapa'){
@@ -71,8 +82,10 @@ export class ListadoSolicitanteComponent implements OnInit {
     }
     this.mensaje = 'mostrar mapa';
     this.showMap = false;
+    
   }
 
+  // se modificara
   buscar(nombre) {
     this.busqueda = nombre;
 
@@ -142,7 +155,7 @@ export class ListadoSolicitanteComponent implements OnInit {
         })[0];
         datos.push(dato);
       }
-      if(this.showMap) {
+      /*if(this.showMap) {
         this.loadMap({
           nombre: 'localizacion de usuario',
           coordenadas: userCoordenates,
@@ -161,10 +174,16 @@ export class ListadoSolicitanteComponent implements OnInit {
             },[datos[i].idEquipoMedico,datos[i].idVendedor]);
           });
         }
-      }
+      }*/
       // Aquí puedes trabajar con las coordenadas, identificadores y las del usuario
     });
     return
+  }
+
+  // obtener coordenadas 
+
+  obtenerCoordendas(datos){
+
   }
 
   calcularDistanciaPrecisa(
@@ -272,6 +291,7 @@ export class ListadoSolicitanteComponent implements OnInit {
       this.microfono.startRecord().then((result => {
         this.microfono.chunks = []
       this.microfono.datos = ''
+      this.valor = result['transcription']
       this.buscar(result['transcription'])
       }))
       this.shearch = false
@@ -280,7 +300,7 @@ export class ListadoSolicitanteComponent implements OnInit {
     this.microfono.stopRecord()
     
     this.shearch = true
-   
-
   }
+
+
 }

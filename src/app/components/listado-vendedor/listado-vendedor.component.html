@@ -10,7 +10,9 @@
             <ion-card>
                 <a href="/products/{{dato.idEquipoMedico}}" class="estilos-a">
                     <ion-card-content>
-                        <img src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+                        
+                        <img *ngIf="dato.imagenes.length > 0 "src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+                        <img *ngIf="dato.imagenes.length == 0 "[src]="imageURL"  alt="{{dato.nombre}}">
                         <ion-title class="product-name">{{dato.nombre}}</ion-title>
                         <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
                         <ion-label class="product-cost"><h1> ${{dato.costo}} </h1></ion-label>

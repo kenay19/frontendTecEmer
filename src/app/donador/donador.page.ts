@@ -11,11 +11,12 @@ export class DonadorPage implements OnInit {
   rutas: any[]= ['/vendedor','/donador','/solicitante']
   show:string = 'listado';
   showSelected!:string
+  nombre !:string;
   constructor(private router:Router) { }
 
   ngOnInit() {
     const usuario = JSON.parse(localStorage.getItem('Usuario'))
-    console.log(usuario)
+    this.nombre = usuario.nombre
     if(!usuario){
       this.router.navigate(['/home'])
     }

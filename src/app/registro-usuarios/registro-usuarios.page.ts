@@ -130,6 +130,21 @@ export class RegistroUsuariosPage implements OnInit {
           this.crud.registraruser(datos).subscribe((data)=> {
             if(data['message'] === 'Usuario Registrado Correctamente'){
               this.router.navigate(['/camera-log'])
+            }else if(data['message'] === 'El usuario ya existe'){
+              this.alerta({header: 'EL usuario ya existe',message:'Cambie el correo',buttons:[
+                {
+                  text: 'Reintentar',
+                  handeler: () => {
+                    email.value = ''
+                  }
+                },
+                {
+                  text: 'Cancelar',
+                  handler: () => {
+                    this.PageReturn()
+                  }
+                }
+              ]}) 
             }
           });
         })

@@ -1,6 +1,6 @@
 <div>
     <div class="container_buscador">
-        <ion-searchbar class="buscador" #buscado></ion-searchbar>
+        <ion-searchbar class="buscador" #buscado value="{{valor}}"></ion-searchbar>
         <ion-buttons>
             <ion-button class="btn_buscador" (click)="buscador(buscado.value)">
                 <ion-img class="icono_buscador" src="../../assets/icon_search.png"></ion-img>
@@ -12,14 +12,18 @@
                 <ion-img class="icono_micro" src="../../assets/icon_microfono.png"></ion-img>
             </ion-button>
         </ion-buttons> 
+        <ion-buttons>
+            <ion-button (click)="cancelar()">cancelar</ion-button>
+        </ion-buttons>
     </div>
     <div>
-        <ion-list class="product-list" lines="none">
+        <ion-list *ngIf="copyDatos" class="product-list" lines="none">
             <ion-item *ngFor="let dato of copyDatos">
                 <ion-card>
                 <a href="/products/{{dato.idEquipoMedico}}" class="estilos-a">
                     <ion-card-content>
-                        <img src="{{dato.imagenes[0][0]}}" alt="">
+                        <img *ngIf="dato.imagenes.length > 0 "src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+                        <img *ngIf="dato.imagenes.length == 0 "[src]="imageURL"  alt="{{dato.nombre}}">
                         <ion-title class="product-name">{{dato.nombre}}</ion-title>
                         <span class="product-description">{{dato.descripcion}}</span>
                         <ion-label class="product-cost">${{dato.costo}}</ion-label>
@@ -28,6 +32,17 @@
                 </ion-card>
             </ion-item>
         </ion-list>
+        <div *ngIf="!copyDatos.length && cargando">
+            <ion-card>
+                <ion-card-header>
+                    No hay productos disponibles
+                </ion-card-header>
+                <ion-card-content>
+                    <img src="/assets/carrito_vacio.png" alt="">
+                </ion-card-content>
+            </ion-card>
+            
+        </div>
     </div>
 
 </div>

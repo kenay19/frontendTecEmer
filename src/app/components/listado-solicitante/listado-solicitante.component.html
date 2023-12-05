@@ -1,7 +1,7 @@
 <div class="container-general">  
 
   <div class="container_buscador">
-    <ion-searchbar class="buscador" show-clear-button="always" #buscador></ion-searchbar>
+    <ion-searchbar class="buscador" show-clear-button="always" #buscador value="{{valor}}"></ion-searchbar>
     <ion-buttons>
         <ion-button class="btn_buscador" (click)="buscar(buscador.value)">
             <ion-img class="icono_buscador" src="../../assets/icon_search.png"></ion-img>
@@ -32,7 +32,8 @@
       <ion-item *ngFor="let dato of copyDatos">
         <ion-card>
           <ion-card-content>
-            <img src="{{dato.imagenes[0][0]}}" alt="">
+            <img *ngIf="dato.imagenes.length > 0 "src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+            <img *ngIf="dato.imagenes.length == 0 "[src]="imageURL"  alt="{{dato.nombre}}">
             <ion-title class="product-name">{{dato.nombre}}</ion-title>
             <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
             <ion-buttons class="btn-solicitar">

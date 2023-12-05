@@ -49,8 +49,12 @@ export class ProductsPage implements OnInit {
             }
           }
           this.equipoMedico = product[0]['0'];
-          this.imagenes = this.equipoMedico['imagenes'];
-          this.principal = this.imagenes['0'];
+          
+          this.imagenes = this.equipoMedico['imagenes'] ;
+          if(this.imagenes.length == 0) {
+            this.imagenes = [['/assets/producto_generico.jpg']];
+          }
+          this.principal = this.imagenes['0'] || '/assets/producto_generico.jpg';
           if (this.user.idRol == 2) {
             this.loadMap(product[0]['0']);
           }
