@@ -13,6 +13,9 @@ export class ListadoDonadorComponent  implements OnInit {
   estados: any[] = [{ name: 'En venta' }];
   filtroSelected !: string 
   shearch:boolean = true;
+  imageURL : string = "/assets/producto_generico.jpg"
+  cargando:boolean = false;
+  valor : string = ''
   constructor(private products:ProductsService , private microfono:MicrofonoService) { }
 
   ngOnInit() {
@@ -35,7 +38,7 @@ export class ListadoDonadorComponent  implements OnInit {
       }
     }
     this.copyDatos = this.datos;
-    console.log(this.datos)
+    this.cargando = true;
   }
 
   filtrado(filtro){
@@ -71,6 +74,7 @@ export class ListadoDonadorComponent  implements OnInit {
       this.microfono.startRecord().then((result => {
         this.microfono.chunks = []
       this.microfono.datos = ''
+      this.valor = result['transcription']
       this.buscador(result['transcription'])
       }))
       this.shearch = false
@@ -81,5 +85,10 @@ export class ListadoDonadorComponent  implements OnInit {
     this.shearch = true
    
 
+  }
+
+  cancelar(){
+    this.valor = ''
+    this.copyDatos = this.datos
   }
 }

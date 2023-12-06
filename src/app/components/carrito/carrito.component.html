@@ -2,7 +2,7 @@
     <div class="container-titulo">
         <ion-title class="titulo"> Materiales médicos </ion-title>
     </div>
-    <div class="container-carrito">
+    <div *ngIf="datos.length > 0"class="container-carrito">
         <ion-item *ngFor="let dato of datos" lines="none" class="carrito-item">
             <ion-label class="nombre">{{dato.nombre}}</ion-label>
             <ion-label class="descripcion">{{dato.descripcion}}</ion-label>
@@ -12,6 +12,17 @@
                 <ion-button (click)="eliminar(dato.idEquipoMedico)" class="eliminar">Eliminar</ion-button>
             </ion-buttons>
         </ion-item>
+        <ion-button (click)="comprarProductos(datos)" class="comprar-carrito">Comprar carrito</ion-button>
     </div>
-    <ion-button (click)="comprarProductos(datos)" class="comprar-carrito">Comprar carrito</ion-button>
+    <div *ngIf="datos.length == 0">
+        <ion-card>
+            <ion-card-header>
+                Carrito Vacio
+            </ion-card-header>
+            <ion-card-content>
+                inserte image o icono fachero facherito de un carrito vacio
+                <p>Agregue productos</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </div>

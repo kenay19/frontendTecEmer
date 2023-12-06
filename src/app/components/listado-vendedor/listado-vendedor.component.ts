@@ -12,6 +12,7 @@ export class ListadoVendedorComponent implements OnInit {
   copyDatos: any[] = [];
   estados: any[] = [{ name: 'En venta' }, { name: 'listado' }];
   estadoSelect !: string;
+  imageURL : string = "/assets/producto_generico.jpg"
   constructor(
     private products: ProductsService,
     private auth: AuthenticateService,
@@ -23,17 +24,19 @@ export class ListadoVendedorComponent implements OnInit {
     const productos = await this.products.getProducts(idUsuario).toPromise();
     for (let i = 0; i < Object.keys(productos).length; i++) {
       this.datos.push(productos[i][0]);
-      for (let j = 0; j < this.datos[i]['imagenes'].length; j++) {
-        try {
-          const response = await this.products
-            .getImageProducts(this.datos[i]['imagenes'][j][0])
-            .toPromise();
-          this.datos[i]['imagenes'][j][0] = URL.createObjectURL(response);
-        } catch (error) {
-          console.error(`Error al cargar la imagen: ${error}`);
+        for (let j = 0; j < this.datos[i]['imagenes'].length; j++) {
+          try {
+            const response = await this.products.getImageProducts(this.datos[i]['imagenes'][j][0]).toPromise();
+            console.log(typeof response)
+            this.datos[i]['imagenes'][j][0] = URL.createObjectURL(response);
+          } catch (error) {
+            console.error(`Error al cargar la imagen: ${error}`);
+          }
         }
-      }
+      
+      
     }
+    console.log(this.datos)
     this.copyDatos = this.datos;
   }
 
