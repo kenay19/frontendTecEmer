@@ -3,11 +3,22 @@
     <ion-item *ngFor="let dato of copyDatos">
       <ion-card>
         <ion-card-content>
-          <img src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+          <img *ngIf="dato.imagenes.length > 0 "src="{{dato.imagenes[0][0]}}" alt="{{dato.nombre}}">
+            <img *ngIf="dato.imagenes.length == 0 "[src]="imageURL"  alt="{{dato.nombre}}">
           <ion-title class="product-name">{{dato.nombre}}</ion-title>
           <span class="product-description"><h2> {{dato.descripcion}} </h2></span>
         </ion-card-content>
       </ion-card>
     </ion-item>
   </ion-list>
+  <div *ngIf="copyDatos.length == 0 ">
+    <ion-card>
+      <ion-card-header>
+        <h1>No haz solicitado equipo medico</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <img src="/assets/carrito_vacio.png" alt="">
+      </ion-card-content>
+    </ion-card>
+  </div>
 </div>

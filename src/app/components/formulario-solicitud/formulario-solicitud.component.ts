@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/service/products.service';
 export class FormularioSolicitudComponent implements OnInit {
   datos: any = [];
   copyDatos: any = [];
-
+  imageURL : string = "/assets/producto_generico.jpg"
   constructor(private products: ProductsService) {}
 
   async ngOnInit() {

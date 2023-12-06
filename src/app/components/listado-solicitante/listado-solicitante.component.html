@@ -3,20 +3,20 @@
   <div class="container_buscador">
     <ion-searchbar class="buscador" show-clear-button="always" #buscador value="{{valor}}"></ion-searchbar>
     <ion-buttons>
-        <ion-button class="btn_buscador" (click)="buscar(buscador.value)">
+        <ion-button class="btn_buscador" (click)="search(buscador.value)" >
             <ion-img class="icono_buscador" src="../../assets/icon_search.png"></ion-img>
         </ion-button>
     </ion-buttons> 
 
     <ion-buttons>
-        <ion-button class="btn_micro" (click)="audioSearch()">
-            <ion-img class="icono_micro" src="../../assets/icon_microfono.png"></ion-img>
+        <ion-button class="btn_micro" >
+            <ion-img class="icono_micro" src="../../assets/icon_microfono.png" (click)="audioSearch()"></ion-img>
         </ion-button>
     </ion-buttons> 
 
     <ion-buttons>
-      <ion-button class="btn_mapa" (click)="changeView(buscador.value)">
-          <ion-img class="icono_mapa" src="../../assets/icon_mapa.png"></ion-img>
+      <ion-button class="btn_mapa" >
+          <ion-img class="icono_mapa" src="../../assets/icon_mapa.png" (click)="changeView()"></ion-img>
       </ion-button>
     </ion-buttons> 
 
@@ -25,10 +25,12 @@
           <ion-img class="icono_cancelar" src="../../assets/icon_cancelar.png"></ion-img>
       </ion-button>
     </ion-buttons> 
+    
   </div>
   
   <div class="container-productos">
-    <ion-list class="product-list" *ngIf="!showMap" lines="none">
+    <ion-input type="number" label="area de busqueda en kilometros" (ionChange)="actualizarRadio(radio.value)"#radio value="{{radio}}"></ion-input>
+    <ion-list class="product-list" *ngIf="!showMap &&copyDatos.length > 0" lines="none">
       <ion-item *ngFor="let dato of copyDatos">
         <ion-card>
           <ion-card-content>
@@ -44,5 +46,18 @@
       </ion-item>
     </ion-list>
   </div>
-  <div id="map" *ngIf="showMap"></div> 
+  <div *ngIf="!showMap && copyDatos.length == 0" >
+    <ion-card>
+      <ion-card-header>
+        <h1>No hay productos donados</h1>
+      </ion-card-header>
+      <ion-card-content>
+        <img src="/assets/carrito_vacio.png" alt="">
+      </ion-card-content>
+    </ion-card>
+  </div>  
+  <div id="map" ></div> 
+
+  
+  
 </div>
