@@ -19,28 +19,41 @@
         align-items: center;
         border-radius: 10px; 
     }
+
+    .custom_button {
+        margin: 10px;
+        height: 50px;
+        width: 150px;
+        border-radius: 10px;
+    }
+
+    .container-aviso {
+        height: auto;
+        width: auto;
+    }
       
     .photo-counter {
         text-align: center;
-        font-size: 35px;
+        font-size: 32px;
         font-style: oblique;
-        margin-top: 5px; 
-        margin-bottom: 10px;
+        margin-top: 8px; 
+        margin-bottom: 8px;
         color: rgb(41, 39, 39);
     }
       
     .video-container {
         width: 100%;
+        height: 480px;
         text-align: center;
-        margin-bottom: 10px;
+    
     }
       
     #video {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 400px;
     }
-      
-    ion-button {
+
+    .btn_tomarf {
         width: 100%;
     }
       
@@ -109,16 +122,11 @@
     }
     .container-left {
         width: 350px;
-        height: 290px;
-
-        position: fixed;
-        display: flex;
-        
-        background-color: #89bb8f;
-       
+        height: 340px;
+        display: flex;   
+        background-color: #89bb8f; 
         flex-direction: column;
-        margin: 10px auto 0 auto !important;
-        
+        margin: 10px auto 0 auto !important;   
         justify-content: center;
         align-items: center;
         border-radius: 10px; 
@@ -150,46 +158,23 @@
         font-size: 12px;
     }
 
-    .photo-container {
-        background-color: #84ce8d;
-        width: 270px;
-        height: 245px;
-        position: fixed;
-
-        left: 55px;
-        margin-top: 590px;
-        
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 10px; 
-        align-items: center; 
-        padding: 10px;
-       
-        border-radius: 10px; 
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .photo {
-        width: 110px; 
-        height: 100px; 
-        border-radius: 5px; 
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    .photo-container,photo {
+        display: none;
     }
     
     .label-container {
         width: 350px;
         height: 255px;
-
-        position: fixed;
+        
         display: grid;
-        grid-gap: 10px;
+        grid-gap: 5px;
         align-items: center;
         justify-content: center;
-        padding: 20px;
         border-radius: 10px; 
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        margin-top: 325px;
-        margin-left: 18px;
+        flex-direction: column;
+        margin: 10px auto 0 auto !important;  
+
     }
       
     ion-label {
@@ -201,6 +186,16 @@
         border-radius: 5px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         font-size: 12px;
+    }
+
+    .container-btn_back {
+        height: 50px;
+        width: 50px;
+    }
+
+    .custom_button {      
+        height: 50px;
+        width: 50px;
     }
 
 }

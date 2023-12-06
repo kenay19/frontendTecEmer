@@ -1,6 +1,5 @@
 <div class="container-general">  
-
-  <div class="container_buscador">
+  <div class="container_buscador">  
     <ion-searchbar class="buscador" show-clear-button="always" #buscador value="{{valor}}"></ion-searchbar>
     <ion-buttons>
         <ion-button class="btn_buscador" (click)="search(buscador.value)" >
@@ -25,11 +24,12 @@
           <ion-img class="icono_cancelar" src="../../assets/icon_cancelar.png"></ion-img>
       </ion-button>
     </ion-buttons> 
-    
+  </div>
+  <div class="container-km">
+    <ion-input class="container-kilometros" type="number" label="Busqueda en kilometros"  (ionChange)="actualizarRadio(radio.value)"#radio value="{{radio}}" labelPlacement="floating"></ion-input>
   </div>
   
   <div class="container-productos">
-    <ion-input type="number" label="area de busqueda en kilometros" (ionChange)="actualizarRadio(radio.value)"#radio value="{{radio}}"></ion-input>
     <ion-list class="product-list" *ngIf="!showMap &&copyDatos.length > 0" lines="none">
       <ion-item *ngFor="let dato of copyDatos">
         <ion-card>

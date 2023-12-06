@@ -1,18 +1,22 @@
-<ion-header [translucent]="true">
-
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-button (click)="PageReturn()"> return </ion-button>
+  <div class="container-btn_back">
+    <ion-buttons class="container_buttons">
+      <ion-button class="custom-button" (click)="PageReturn()">
+        <ion-img class="icon_back" src="../../assets/icon_back.png"></ion-img>
+      </ion-button>
+    </ion-buttons> 
+  </div>
   <div class="container-left">
     <p class="photo-counter">Número de fotos tomadas {{intentosNum}}</p>
     <div class="video-container">
       <video id="video" controls></video>
     </div>
-    <p *ngIf="estado == 'iniciando' || estado == 'imagen procesada'"> {{mensaje}}</p>
-    <p *ngIf="estado == 'procesando' "> {{mensaje}}</p>
-    <p *ngIf="estado == 'imagen no valida' "> {{mensaje}}</p>
-    <ion-button (click)="showFoto()">Tomar foto</ion-button>
+    <div class="container-aviso">
+      <p *ngIf="estado == 'iniciando' || estado == 'imagen procesada'"> {{mensaje}}</p>
+      <p *ngIf="estado == 'procesando' "> {{mensaje}}</p>
+      <p *ngIf="estado == 'imagen no valida' "> {{mensaje}}</p>
+    </div>
+    <ion-button class="btn_tomarf" (click)="showFoto()">Tomar foto</ion-button>
   </div>
   <div class="photo-container">
     <img class="photo" src="../../assets/johnny_perfil_si.png">

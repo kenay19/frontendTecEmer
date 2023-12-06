@@ -1,7 +1,6 @@
 <ion-content [fullscreen]="true" class="custom-form">
   <ion-title size="large" class="form-title">Registro de usuarios</ion-title>
   <div class="form-container">
-    <ion-button (click)="PageReturn()">Regresar</ion-button>
     <div class="left-column">
       <form>
         <ion-item>
@@ -32,7 +31,7 @@
           <ion-input label="Contraseña *" type="password" #contrasena></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input label="Vuelve a introducir la Contraseña *" type="password" #contrasenaConfirmacion></ion-input>
+          <ion-input label="Volver a introducir *" type="password" #contrasenaConfirmacion></ion-input>
         </ion-item>
 
         <ion-item>
@@ -63,7 +62,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-input label="Código Postal *" type="text" #cp></ion-input>
+          <ion-input label="Código Postal *" maxlength="5" type="text" #cp></ion-input>
         </ion-item>
 
         <ion-item>

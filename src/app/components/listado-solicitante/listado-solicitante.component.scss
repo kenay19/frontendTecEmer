@@ -134,6 +134,26 @@
   .solicitar:hover {
     background-color: #45a049;
   }
+
+  .container-kilometros {
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    padding: 10px;
+    display: flex; 
+    margin-left: auto;
+    width: 175px; 
+    height: 40px;
+    
+  }
+  
+  .container-kilometros input {
+    border: none; 
+    outline: none; 
+  }
+
+  .container-km{
+    width: 100%;
+  }
 }
 
 // Telefono
@@ -150,7 +170,7 @@
     padding: 10px;
   }
 
-  /* Estilo para el contenedor principal */
+
   .container_buscador {
     width: 100%;
     display: flex;
